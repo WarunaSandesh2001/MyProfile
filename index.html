@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=devise-width initial-scale=1">
     <meta name="theme-color" content="black">
 
-    <!-- <meta http-equiv="refresh" content="3;https://ijse.lk"> -->
 </head>
 
 <body>
@@ -68,30 +67,33 @@
             <img usemap="#hibernate" src="assets/Images/hibernate.jpg" alt="MYSQL Icon" width="230" border="1">
 
             <map name="#java">
-                <area shape="rect" coords="0,0,300,400" href="https://docs.oracle.com/en/java/" alt="Go To Oracle Site">
+                <area shape="rect" coords="0,0,300,400" href="https://docs.oracle.com/en/java/" target="_blank"
+                      alt="Go To Oracle Site">
             </map>
 
             <map name="#css">
                 <area shape="rect" coords="0,0,300,400"
                       href="https://docs.oracle.com/cd/E92519_02/pt856pbr3/eng/pt/tmap/concept_CascadingStyleSheets_CSS.html?pli=ul_d34e52_tmap"
+                      target="_blank"
                       alt="Go To Oracle Site">
             </map>
 
             <map name="#html">
                 <area shape="rect" coords="0,0,300,400" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element"
+                      target="_blank"
                       alt="Go To Oracle Site">
             </map>
 
             <map name="#mysql">
                 <area shape="rect" coords="0,0,300,400"
                       href="https://www.jetbrains.com/datagrip/features/?source=google&medium=cpc&campaign=15034928317&gclid=Cj0KCQiAhf2MBhDNARIsAKXU5GQjxxe5s10iwO_Wa4PKm1qwIAACIDTy7S1VZkCJiZs6YJmmlLNkQqUaAmp6EALw_wcB"
-                      alt="Go To Oracle Site">
+                      target="_blank" alt="Go To Oracle Site">
             </map>
 
             <map name="#hibernate">
                 <area shape="rect" coords="0,0,300,400"
                       href="https://docs.jboss.org/hibernate/orm/5.6/userguide/html_single/Hibernate_User_Guide.html"
-                      alt="Go To Hibernate Site">
+                      target="_blank" alt="Go To Hibernate Site">
             </map>
         </section>
         <hr>
@@ -109,12 +111,31 @@
 </main>
 
 <footer>
+
     <p>W.G.Waruna Sandesh</p>
     <p><a href="tel:+94713402092"> Call me</a> 071 3402092</p>
     <p><a href="mailto:warunasandesh2001@gmail.com"> Click to send me a Mail/warunasnadesh20001@gmail.com</a></p>
     <p>Matara ,Sri Lanka</p>
-</footer>
 
+    <form action="">
+        <fieldset>
+            <legend>Send Message</legend>
+            <br>
+            <label for="txtName">Your Name</label>
+            <input id="txtName" type="text"><br><br>
+
+            <label for="txtEmail">E-mail</label>
+            <input id="txtEmail" type="text"><br><br>
+
+            <label for="txtAdd">Address</label>
+            <textarea id="txtAdd">
+
+            </textarea>
+            <button>Submit</button>
+        </fieldset>
+    </form>
+
+</footer>
 </body>
 
 </html>
