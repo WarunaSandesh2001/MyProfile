@@ -4,16 +4,20 @@
     <title> My Profile </title>
     <link href="assets/Images/11.jpg" rel="icon">
 
-    <meta name="keyword" content="Waruna,Sandesh">
-    <meta name="description" content="This is for testing">
+    <meta content="Waruna,Sandesh" name="keyword">
+    <meta content="This is for testing" name="description">
 
-    <meta name="viewport" content="width=devise-width initial-scale=1">
-    <meta name="theme-color" content="black">
+    <meta content="width=devise-width initial-scale=1" name="viewport">
+    <meta content="black" name="theme-color">
 
     <link href="assets/css/normalize.css" rel="stylesheet">
     <link href="assets/css/fonts/css/all.css" rel="stylesheet">
 
     <style>
+        main{
+            /*background: black;*/
+        }
+
         header {
             position: relative;
             height: 80px;
@@ -39,37 +43,31 @@
 
         #section1 {
             width: 100%;
-            height: 500px;
-            background-color: darkblue;
+            height: 600px;
+            background: linear-gradient(to bottom, #000000, #31051f, #520046, #65007f, #5216c7);
         }
 
-        /*main> section > section:nth-child(1) > h1{
+        #name1 {
             position: absolute;
             color: white;
-            font-size: 90px;
-            font-family: Times New Roman;
-            right: 160px;
-            bottom: 425px;
-        }*/
-        #name1{
-            position: absolute;
-            color: white;
-            font-size: 90px;
+            font-size: 95px;
             font-family: Times New Roman;
             right: 550px;
             bottom: 425px;
             font-weight: bold;
         }
-        #name2{
+
+        #name2 {
             position: absolute;
             color: white;
-            font-size: 90px;
+            font-size: 95px;
             font-family: Times New Roman;
             right: 160px;
             bottom: 325px;
             font-weight: normal;
         }
-        main> section > section:nth-child(1) > h2:first-child{
+
+        main > section > section:nth-child(1) > h2:first-child {
             position: absolute;
             color: white;
             font-family: Times New Roman;
@@ -77,6 +75,98 @@
             bottom: 580px;
             color: yellow;
         }
+
+        main > section > section:first-child > img {
+            position: absolute;
+            right: 1250px;
+            bottom: 265px;
+            transform: rotate(-20deg);
+            width: 175px;
+        }
+
+        main > section > section:nth-child(1) > h2:last-child {
+            position: absolute;
+            color: white;
+            /*font-family: ;*/
+            right: 800px;
+            bottom: 220px;
+            color: white;
+        }
+
+        #section2 {
+            width: 95%;
+            height: 500px;
+            position: relative;
+            left: 40px;
+            border-radius: 10px;
+            background:  linear-gradient(to right top, #2f00ee, #6b0095, #5c0050, #360021, #000000);
+        }
+
+        #section2 > h2 {
+            color: white;
+            position: relative;
+            left: 19px;
+            font-weight: bolder;
+            font-size: 40px;
+            top: 10px;
+        }
+
+        #section2 > h4 {
+            color: white;
+            position: relative;
+            font-family: "Times New Roman";
+            font-size: 16px;
+            left: 100px;
+            font-weight: normal;
+            top: 30px;
+        }
+
+        #section2 > img {
+            position: relative;
+            left: 650px;
+            bottom: 225px;
+            width: 700px;
+        }
+
+        #section2 > p{
+            color: white;
+            position: relative;
+            top: 50px;
+            left: 75px;
+        }
+
+        #section3 {
+            width: 95%;
+            height: 500px;
+            position: relative;
+            left: 40px;
+            border-radius: 10px;
+            background:  linear-gradient(to right top, #2f00ee, #6b0095, #5c0050, #360021, #000000);
+        }
+
+        #section3 > h2 {
+            color: white;
+            position: relative;
+            left: 19px;
+            font-weight: bolder;
+            font-size: 40px;
+            top: 10px;
+        }
+        #section3 > div {
+            position: relative;
+            background: white;
+            width: 500px;
+            height: 2px;
+            left: 70px;
+            top: 175px;
+        }
+        #section3 > pre{
+            position: relative;
+            color: white;
+            right: 90px;
+            top: 80px;
+        }
+
     </style>
 
 </head>
@@ -99,76 +189,96 @@
             <h2>Hello I'm..,</h2>
             <h1 ID="name1">WARUNA</h1>
             <h1 ID="name2">SANDESH</h1>
-            <img src="assets/Images/gallery2.jpeg" alt="Profile picture" width="150">
+            <img alt="Profile picture" src="assets/Images/gallery2.jpeg" width="150">
             <h2>Full Stack Developer</h2>
         </section>
-        <hr>
-        <section>
+        <!--<hr>-->
+        <section ID="section2">
             <h2>About me</h2>
-            <pre>
-                        Name     : W.G.Waruna Sandesh
-                        Age      : 20
-                        Location : Weligama,Matara
-                                   Sri lanka
-                        E-mail   : warunasandesh2001@gmail.com
-                        Contact  : +9471 3402092
-                    </pre>
-            <p>I am an undergraduate of Software Engineering in <abbr title="Institute of Java Software Engineering">IJSE</abbr>.
+            <h4>
+                Name     : W.G.Waruna Sandesh
+            </h4>
+            <h4>
+                Age      : 20
+            </h4>
+            <h4>
+                Location : Weligama, Matara, Sri lanka.
+            </h4>
+            <h4>
+                E-mail   : warunasandesh2001@gmail.com
+            </h4>
+            <h4>
+                Contact : +9471 3402092
+            </h4>
+
+
+            <p>I am an undergraduate of Software Engineering in <abbr
+                    title="Institute of Java Software Engineering">IJSE</abbr>.
             </p>
 
-            <img src="assets/Images/gallery1.jpeg" alt="Picture with my friends" width="350">
+            <img alt="Picture with my friends" src="assets/Images/gallery1.jpeg">
+
         </section>
         <hr>
 
-        <section>
+        <section ID="section3">
             <h2>Education</h2>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
             <pre>
                        Primary School           A/L Exam 2020
                         2005-2010              result : C S S
 
+
+
+
                                   O/L Exam 2017                  Now
                                 result : 5A 3B 1C             learn in IJSE
-                    </pre>
+            </pre>
         </section>
         <hr>
 
         <section>
             <h2>Technologies</h2>
             <p>I'm working..</p>
-            <img usemap="#java" src="assets/Images/java-logo.png" alt="Java Icon" width="220" border="1">
-            <img usemap="#css" src="assets/Images/css3-logo.png" alt="CSS Icon" width="300" border="1">
-            <img usemap="#html" src="assets/Images/html-logo.png" alt="HTML Icon" width="220" border="1">
-            <img usemap="#mysql" src="assets/Images/mysql.png" alt="MYSQL Icon" width="230" border="1">
-            <img usemap="#hibernate" src="assets/Images/hibernate.jpg" alt="MYSQL Icon" width="230" border="1">
+            <img alt="Java Icon" border="1" src="assets/Images/java-logo.png" usemap="#java" width="220">
+            <img alt="CSS Icon" border="1" src="assets/Images/css3-logo.png" usemap="#css" width="300">
+            <img alt="HTML Icon" border="1" src="assets/Images/html-logo.png" usemap="#html" width="220">
+            <img alt="MYSQL Icon" border="1" src="assets/Images/mysql.png" usemap="#mysql" width="230">
+            <img alt="MYSQL Icon" border="1" src="assets/Images/hibernate.jpg" usemap="#hibernate" width="230">
 
             <map name="#java">
-                <area shape="rect" coords="0,0,300,400" href="https://docs.oracle.com/en/java/" target="_blank"
-                      alt="Go To Oracle Site">
+                <area alt="Go To Oracle Site" coords="0,0,300,400" href="https://docs.oracle.com/en/java/" shape="rect"
+                      target="_blank">
             </map>
 
             <map name="#css">
-                <area shape="rect" coords="0,0,300,400"
+                <area alt="Go To Oracle Site" coords="0,0,300,400"
                       href="https://docs.oracle.com/cd/E92519_02/pt856pbr3/eng/pt/tmap/concept_CascadingStyleSheets_CSS.html?pli=ul_d34e52_tmap"
-                      target="_blank"
-                      alt="Go To Oracle Site">
+                      shape="rect"
+                      target="_blank">
             </map>
 
             <map name="#html">
-                <area shape="rect" coords="0,0,300,400" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element"
-                      target="_blank"
-                      alt="Go To Oracle Site">
+                <area alt="Go To Oracle Site" coords="0,0,300,400"
+                      href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element"
+                      shape="rect"
+                      target="_blank">
             </map>
 
             <map name="#mysql">
-                <area shape="rect" coords="0,0,300,400"
+                <area alt="Go To Oracle Site" coords="0,0,300,400"
                       href="https://www.jetbrains.com/datagrip/features/?source=google&medium=cpc&campaign=15034928317&gclid=Cj0KCQiAhf2MBhDNARIsAKXU5GQjxxe5s10iwO_Wa4PKm1qwIAACIDTy7S1VZkCJiZs6YJmmlLNkQqUaAmp6EALw_wcB"
-                      target="_blank" alt="Go To Oracle Site">
+                      shape="rect" target="_blank">
             </map>
 
             <map name="#hibernate">
-                <area shape="rect" coords="0,0,300,400"
+                <area alt="Go To Hibernate Site" coords="0,0,300,400"
                       href="https://docs.jboss.org/hibernate/orm/5.6/userguide/html_single/Hibernate_User_Guide.html"
-                      target="_blank" alt="Go To Hibernate Site">
+                      shape="rect" target="_blank">
             </map>
         </section>
         <hr>
@@ -176,9 +286,9 @@
         <section>
             <h2>Projects</h2>
             <p>I have Done..</p>
-            <img src="assets/Images/Student%20M.S..png" alt="Student Management System" width="400">
-            <img src="assets/Images/foodcity.png" alt="WhaleSale System" width="400">
-            <img src="assets/Images/hotel_Management_System1.png" alt="Hotel Management System" width="400">
+            <img alt="Student Management System" src="assets/Images/Student%20M.S..png" width="400">
+            <img alt="WhaleSale System" src="assets/Images/foodcity.png" width="400">
+            <img alt="Hotel Management System" src="assets/Images/hotel_Management_System1.png" width="400">
             <h3>CSS Assignments I have Done</h3>
             <ol>
                 <li>
