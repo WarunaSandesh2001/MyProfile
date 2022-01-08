@@ -152,7 +152,7 @@
             font-size: 40px;
             top: 10px;
         }
-        #section3 > div {
+        #section3 :nth-child(2) {
             position: relative;
             background: white;
             width: 500px;
@@ -164,7 +164,18 @@
             position: relative;
             color: white;
             right: 90px;
-            top: 80px;
+            top: 35px;
+        }
+        .selectedOne  {
+            position: relative;
+            background: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+        }
+        #section3 :nth-child(3){
+            left: 50px;
+            top: 50px;
         }
 
     </style>
@@ -224,10 +235,10 @@
         <section ID="section3">
             <h2>Education</h2>
             <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <div class="selectedOne"></div>
+            <div class="selectedOne"></div>
+            <div class="selectedOne"></div>
+            <div class="selectedOne"></div>
             <pre>
                        Primary School           A/L Exam 2020
                         2005-2010              result : C S S
