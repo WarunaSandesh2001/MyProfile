@@ -14,7 +14,8 @@
     <link href="assets/css/fonts/css/all.css" rel="stylesheet">
 
     <style>
-        main{
+        main {
+            overflow: hidden;
             /*background: black;*/
         }
 
@@ -39,11 +40,12 @@
         header > ul > li {
             padding: 0 10px 0 10px;
             display: inline-block;
+            cursor: pointer;
         }
 
         #section1 {
             width: 100%;
-            height: 600px;
+            height: 80vh;
             background: linear-gradient(to bottom, #000000, #31051f, #520046, #65007f, #5216c7);
         }
 
@@ -52,8 +54,10 @@
             color: white;
             font-size: 95px;
             font-family: Times New Roman;
-            right: 550px;
-            bottom: 425px;
+            animation-name: animation1;
+            animation-duration: 5s;
+            animation-iteration-count: initial;
+            animation-fill-mode: forwards;
             font-weight: bold;
         }
 
@@ -62,10 +66,34 @@
             color: white;
             font-size: 95px;
             font-family: Times New Roman;
-            right: 160px;
-            bottom: 325px;
+            animation-name: animation2;
+            animation-duration: 5s;
+            animation-iteration-count: initial;
+            animation-fill-mode: forwards;
             font-weight: normal;
         }
+
+        @keyframes animation1 {
+            from{
+                right: 550px;
+                top: 0px;
+            }
+            to{
+                right: 550px;
+                top: 130px;
+            }
+        }
+        @keyframes animation2 {
+            from{
+                right: 160px;
+                bottom: 0px;
+            }
+            to{
+                right: 160px;
+                bottom: 280px;
+            }
+        }
+
 
         main > section > section:nth-child(1) > h2:first-child {
             position: absolute;
@@ -151,11 +179,11 @@
 
         #section2 {
             width: 95%;
-            height: 500px;
+            height: 65vh;
             position: relative;
             left: 40px;
             border-radius: 10px;
-            background:  linear-gradient(to right top, #2f00ee, #6b0095, #5c0050, #360021, #000000);
+            background: linear-gradient(to right top, #2f00ee, #6b0095, #5c0050, #360021, #000000);
         }
 
         #section2 > h2 {
@@ -184,7 +212,7 @@
             width: 700px;
         }
 
-        #section2 > p{
+        #section2 > p {
             color: white;
             position: relative;
             top: 50px;
@@ -193,11 +221,11 @@
 
         #section3 {
             width: 95%;
-            height: 500px;
+            height: 65vh;
             position: relative;
             left: 40px;
             border-radius: 10px;
-            background:  linear-gradient(to right top, #2f00ee, #6b0095, #5c0050, #360021, #000000);
+            background: linear-gradient(to right top, #2f00ee, #6b0095, #5c0050, #360021, #000000);
         }
 
         #section3 > h2 {
@@ -208,6 +236,7 @@
             font-size: 40px;
             top: 10px;
         }
+
         #section3 :nth-child(2) {
             position: relative;
             background: white;
@@ -216,37 +245,43 @@
             left: 70px;
             top: 175px;
         }
-        #section3 > pre{
+
+        #section3 > pre {
             position: relative;
             color: white;
             right: 90px;
             bottom: 20px;
         }
-        .selectedOne  {
+
+        .selectedOne {
             position: relative;
             background: white;
             width: 25px;
             height: 25px;
             border-radius: 100%;
         }
-        #section3 :nth-child(3){
+
+        #section3 :nth-child(3) {
             border-width: 2px;
             left: 485px;
             top: 162px;
             background: #ee0216;
             border-color: yellow;
         }
-        #section3 :nth-child(4){
+
+        #section3 :nth-child(4) {
             left: 375px;
             top: 138px;
             background: black;
         }
-        #section3 :nth-child(5){
+
+        #section3 :nth-child(5) {
             left: 250px;
             top: 113px;
             background: black;
         }
-        #section3 :nth-child(6){
+
+        #section3 :nth-child(6) {
             left: 125px;
             top: 88px;
             background: black;
@@ -261,7 +296,8 @@
             left: 720px;
 
         }
-        #section3 :nth-child(8){
+
+        #section3 :nth-child(8) {
             position: relative;
             background: white;
             width: 2px;
@@ -269,7 +305,8 @@
             left: 700px;
             bottom: 380px;
         }
-        #section3 :nth-child(9){
+
+        #section3 :nth-child(9) {
             position: relative;
             background: #e3580e;
             width: 60px;
@@ -277,7 +314,8 @@
             bottom: 770px;
             left: 750px;
         }
-        #section3 :nth-child(10){
+
+        #section3 :nth-child(10) {
             position: relative;
             background: orange;
             width: 60px;
@@ -285,7 +323,8 @@
             bottom: 920px;
             left: 850px;
         }
-        #section3 :nth-child(11){
+
+        #section3 :nth-child(11) {
             position: relative;
             background: #46de14;
             width: 60px;
@@ -293,7 +332,8 @@
             bottom: 1070px;
             left: 950px;
         }
-        #section3 :nth-child(12){
+
+        #section3 :nth-child(12) {
             position: relative;
             background: #29bbcf;
             width: 60px;
@@ -301,7 +341,8 @@
             bottom: 1219px;
             left: 1050px;
         }
-        #section3 :nth-child(13){
+
+        #section3 :nth-child(13) {
             position: relative;
             background: #9d12c7;
             width: 60px;
@@ -309,7 +350,8 @@
             bottom: 1370px;
             left: 1150px;
         }
-        #section3 :nth-child(14){
+
+        #section3 :nth-child(14) {
             position: relative;
             background: #c7be12;
             width: 60px;
@@ -317,50 +359,57 @@
             bottom: 1520px;
             left: 1250px;
         }
-        .skillType{
+
+        .skillType {
             position: relative;
         }
-        #section3 :nth-child(16){
+
+        #section3 :nth-child(16) {
             color: #e3580e;
             left: 760px;
             bottom: 1630px;
         }
-        #section3 :nth-child(17){
+
+        #section3 :nth-child(17) {
             color: orange;
             left: 860px;
             bottom: 1669px;
         }
-        #section3 :nth-child(18){
+
+        #section3 :nth-child(18) {
             color: #46de14;
             left: 963px;
             bottom: 1709px;
         }
-        #section3 :nth-child(19){
+
+        #section3 :nth-child(19) {
             color: #29bbcf;
             left: 1055px;
             bottom: 1750px;
         }
-        #section3 :nth-child(20){
+
+        #section3 :nth-child(20) {
             color: #9d12c7;
             left: 1147px;
             bottom: 1790px;
         }
-        #section3 :nth-child(21){
+
+        #section3 :nth-child(21) {
             color: #c7be12;
             left: 1255px;
             bottom: 1830px;
         }
 
-        #section4{
+        #section4 {
             width: 95%;
-            height: 500px;
+            height: 65vh;
             position: relative;
             left: 40px;
             border-radius: 10px;
-            background:  linear-gradient(to right top, #2f00ee, #6b0095, #5c0050, #360021, #000000);
+            background: linear-gradient(to right top, #2f00ee, #6b0095, #5c0050, #360021, #000000);
         }
 
-        #section4 > h2{
+        #section4 > h2 {
             color: white;
             position: relative;
             left: 19px;
@@ -368,13 +417,41 @@
             font-size: 40px;
             top: 10px;
         }
-        #section4 > p{
+
+        #section4 > p {
             color: white;
             position: relative;
             left: 22px;
         }
-        #section4:nth-child(3) {
+
+        /*#section4>img{================================================================================
+            border-radius: 20px;
+        }
+        #img1 :hover {
             background: #3a483b;
+        }=============================================================================================*/
+        #section5 {
+            width: 95%;
+            height: 80vh;
+            position: relative;
+            left: 40px;
+            border-radius: 10px;
+            background: linear-gradient(to right top, #2f00ee, #6b0095, #5c0050, #360021, #000000);
+        }
+
+        #section5 > h2 {
+            color: white;
+            position: relative;
+            left: 19px;
+            font-weight: bolder;
+            font-size: 40px;
+            top: 10px;
+        }
+
+        #section5 > p {
+            color: white;
+            position: relative;
+            left: 22px;
         }
     </style>
 
@@ -405,16 +482,16 @@
         <section ID="section2">
             <h2>About me</h2>
             <h4>
-                Name     : W.G.Waruna Sandesh
+                Name : W.G.Waruna Sandesh
             </h4>
             <h4>
-                Age      : 20
+                Age : 20
             </h4>
             <h4>
                 Location : Weligama, Matara, Sri lanka.
             </h4>
             <h4>
-                E-mail   : warunasandesh2001@gmail.com
+                E-mail : warunasandesh2001@gmail.com
             </h4>
             <h4>
                 Contact : +9471 3402092
@@ -435,7 +512,7 @@
             <img alt="Picture with my friends" src="assets/Images/gallery1.jpeg">
 
         </section>
-       <!-- <hr>-->
+        <!-- <hr>-->
 
         <section ID="section3">
             <h2>Education</h2>
@@ -475,11 +552,12 @@
         <section ID="section4">
             <h2>Technologies</h2>
             <p>I'm working..</p>
-            <img alt="Java Icon" border="1" src="assets/Images/java-logo.png" usemap="#java" width="220">
-            <img alt="CSS Icon" border="1" src="assets/Images/css3-logo.png" usemap="#css" width="300">
-            <img alt="HTML Icon" border="1" src="assets/Images/html-logo.png" usemap="#html" width="220">
-            <img alt="MYSQL Icon" border="1" src="assets/Images/mysql.png" usemap="#mysql" width="230">
-            <img alt="Hibernate Icon" border="1" src="assets/Images/hibernate.png" usemap="#hibernate" width="230">
+            <img ID="img1" alt="Java Icon" border="1" src="assets/Images/java-logo.png" usemap="#java" width="220">
+            <img ID="img2" alt="CSS Icon" border="1" src="assets/Images/css3-logo.png" usemap="#css" width="300">
+            <img ID="img3" alt="HTML Icon" border="1" src="assets/Images/html-logo.png" usemap="#html" width="220">
+            <img ID="img4" alt="MYSQL Icon" border="1" src="assets/Images/mysql.png" usemap="#mysql" width="230">
+            <img ID="img6" alt="Hibernate Icon" border="1" src="assets/Images/hibernate.png" usemap="#hibernate"
+                 width="230">
 
             <map name="#java">
                 <area alt="Go To Oracle Site" coords="0,0,300,400" href="https://docs.oracle.com/en/java/" shape="rect"
@@ -514,7 +592,7 @@
         </section>
         <!--<hr>-->
 
-        <section>
+        <section ID="section5">
             <h2>Projects</h2>
             <p>I have Done..</p>
             <img alt="Student Management System" src="assets/Images/Student%20M.S..png" width="400">
