@@ -5,7 +5,36 @@
     <title>Case 03 - Animation</title>
 
     <style>
+        body{
+            background-color: #1f2126;
+            overflow: hidden;
+        }
+        main{
+            width: 700px;
+            height: 400px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 100px;
+            margin:auto;
+            overflow: hidden;
+            border: 5px solid #d7c6c6d6;;
+        }
+        main>section{
+            width: 400%;
+            height: 100%;
+            display: flex;
+            animation-name: slideme;
+            animation-duration: 10s;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+        }
 
+        main>section>div{
+            border: #ee0216 solid 2px;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
