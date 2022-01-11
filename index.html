@@ -496,24 +496,27 @@
             left: 22px;
         }
 
-        main> section>section:nth-child(5) > div{
+        main> section>section:nth-child(5)>a>div{
             position: relative;
             width: 40vw;
             height: 50vh;
             background-color: yellow;
+            border-radius: 20px;
         }
         #div1{
+            position: relative;
+            text-decoration: none;
             left: 70px;
-            border-radius: 20px;
             cursor: pointer;
         }
         #div2{
+            position: relative;
+            text-decoration: none;
             left: 760px;
             bottom: 412px;
-            border-radius: 20px;
             cursor: pointer;
         }
-        #div1 > h3{
+        #div1 >div> h3{
             position: relative;
             font-family: Ubuntu;
             font-size: 35px;
@@ -522,7 +525,7 @@
             left: 220px;
             top: 154px;
         }
-        #div2 > h3{
+        #div2 >div> h3{
             position: relative;
             font-family: Ubuntu;
             font-size: 35px;
@@ -531,11 +534,11 @@
             left: 190px;
             top: 150px;
         }
-        #div1:hover{
+        #div1>div:hover{
             transition: all 0.5s;
             background: #7c807c;
         }
-        #div2:hover{
+        #div2>div:hover{
             transition: all 0.5s;
             background: #7c807c;
         }
@@ -703,12 +706,18 @@
                     <a href="myProjects/CSS/Assignment%2008/index.html">Assignment 08 (Animation)</a>
                 </li>
             </ol>-->
-            <div ID="div1">
-                <h3>Projects</h3>
-            </div>
-            <div  ID="div2">
-                <h3>CSS Assignments</h3>
-            </div>
+            <a href="" ID="div1">
+                <div>
+                    <h3>Projects</h3>
+                </div>
+            </a>
+
+            <a href="assignments.html" ID="div2">
+                <div >
+                    <h3>CSS Assignments</h3>
+                </div>
+            </a>
+
         </section>
         <!--<hr>-->
     </section>
