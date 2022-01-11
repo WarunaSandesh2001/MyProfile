@@ -33,17 +33,13 @@
             z-index: 100;
         }
 
-        /*header> div{
-            position: sticky;
-
-        }*/
-
         header > div > ul {
             position: absolute;
             right: 30px;
             top: -5px;
             font-size: 24px;
-            font-family: 'Lobster', cursive;
+            /*font-family: 'Lobster', cursive;*/
+            font-family: "Chaparral Pro";
             list-style: none;
             color: yellow;
         }
@@ -59,6 +55,12 @@
             cursor: pointer;
         }
 
+        header > div > ul > li:hover {
+            color: #ee0216;
+        }
+        header > div > ul > li>a:hover {
+            color: #ee0216;
+        }
         #section1 {
             width: 100%;
             height: 80vh;
@@ -86,7 +88,7 @@
             animation-duration: 5s;
             animation-iteration-count: initial;
             animation-fill-mode: forwards;
-            font-weight: normal;
+            font-weight: bold;
         }
 
         @keyframes animation1 {
@@ -563,16 +565,16 @@
         }
 
         #section6{
-            /*overflow-x: hidden;*/
+            overflow: hidden;
             background-color: #2e3136;
             width: 100%;
-            height: 500px;
+            height: 600px;
         }
 
         #section6 > div:nth-child(1){
             position: relative;
             left: 10%;
-            top: 20%;
+            top: 10%;
             color: white;
             font-size: 20px;
             display: flex;
@@ -583,19 +585,91 @@
         #section6 > div:nth-child(2){
             position: relative;
             width: 2px;
-            height: 100%;
+            height: 99%;
             background-color: white;
             left: 50vw;
-            bottom: 50%;
+            bottom: 75%;
         }
         #section6 > div:nth-child(3){
             position: relative;
             width: 38%;
             height: 400px;
-            background-color: white;
+            background-color: #0d1d4c;
             left: 55vw;
-            bottom: 140%;
+            bottom: 162%;
+            border-radius: 5%;
+            border: #ff6c38 solid 2px;
         }
+
+        #section6 > div:nth-child(3)> form> fieldset>legend{
+            position: relative;
+            font-family: Ubuntu;
+            font-size: 40px;
+            text-align: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        #section6 > div:nth-child(3)> form> label{
+            position: relative;
+            color: white;
+            left: 15px;
+        }
+
+        #section6 > div:nth-child(3)> form> input{
+            position: relative;
+            width: 350px;
+        }
+
+        #section6 > div:nth-child(3)> form> textarea{
+            position: relative;
+            width: 350px;
+        }
+
+        #txtName{
+           left: 50px;
+        }
+        #txtEmail{
+            left: 79px;
+        }
+
+        #txtAdd{
+            left: 75px;
+            height: 50px;
+        }
+
+        .contactMe{
+            width: 100%;
+            height: 100%;
+        }
+
+        #section6 > div:nth-child(1) > p>a{
+            color: #4ed429;
+        }
+
+        #section6> div > h3{
+            position: relative;
+            top: 10px;
+            text-align: center;
+            font-size: 35px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        #btnSubmit{
+            background-color: #229309;
+            border: #ffffff solid 2px;
+            width: 121px;
+            bottom: -14%;
+            position: relative;
+            height: 35px;
+            border-radius: 3%;
+            left: -19px;
+            font-weight: bold;
+            color: white;
+        }
+
     </style>
 
 </head>
@@ -609,7 +683,7 @@
             <li><a href="#section3">Education</a></li>
             <li><a href="#section5">Projects</a></li>
             <li>Reviews</li>
-            <li>Contact</li>
+            <li><a href="https://wa.me/94713402092">Contact</a></li>
         </ul>
     </div>
 
@@ -782,29 +856,27 @@
         <div>
             <p>W.G.Waruna Sandesh</p>
             <p><a href="tel:+94713402092">Phone</a>(+94 71 3402092)</p>
-            <p><a href="mailto:warunasandesh2001@gmail.com">Mail</a>(warunasnadesh2001@gmail.com)</p>
+            <p><a href="mailto:warunasandesh2001@gmail.com">Mail</a>(warunasandesh2001@gmail.com)</p>
             <p>Matara ,Sri Lanka</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248.01254917012957!2d80.41129508701509!3d5.967060306062285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae11520bb915471%3A0x2b52b7fa19286958!2sWeligama!5e0!3m2!1sen!2slk!4v1641884868700!5m2!1sen!2slk" width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
 
         <div></div>
 
         <div>
-            <form action="">
-                <fieldset>
-                    <legend>Send Message</legend>
+            <h3>Send Message</h3>
+            <form class="contactMe" action="">
                     <br>
-                    <label for="txtName">Your Name</label>
+                    <br>
+                    <label for="txtName">Your Name :</label>
                     <input id="txtName" type="text"><br><br>
-
-                    <label for="txtEmail">E-mail</label>
+                    <br>
+                    <label for="txtEmail">E-mail :</label>
                     <input id="txtEmail" type="text"><br><br>
-
-                    <label for="txtAdd">Address</label>
-                    <textarea id="txtAdd">
-
-            </textarea>
-                    <button>Submit</button>
-                </fieldset>
+                    <br>
+                    <label for="txtAdd">Subject :</label>
+                    <textarea id="txtAdd"></textarea>
+                    <button id="btnSubmit">Submit</button>
             </form>
         </div>
 
