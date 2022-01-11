@@ -14,9 +14,13 @@
     <link href="assets/css/fonts/css/all.css" rel="stylesheet">
 
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         main {
             overflow: hidden;
-            /*background: black;*/
+            background: #555454;
         }
 
         header {
@@ -27,7 +31,12 @@
             color: gold;
         }
 
-        header > ul {
+        /*header> div{
+            position: sticky;
+
+        }*/
+
+        header > div > ul {
             position: absolute;
             right: 30px;
             top: 0;
@@ -37,7 +46,12 @@
             color: yellow;
         }
 
-        header > ul > li {
+        header > div > ul > li > a {
+            text-decoration: none;
+            color: yellow;
+        }
+
+        header > div > ul > li {
             padding: 0 10px 0 10px;
             display: inline-block;
             cursor: pointer;
@@ -74,21 +88,22 @@
         }
 
         @keyframes animation1 {
-            from{
+            from {
                 right: 550px;
                 top: 0px;
             }
-            to{
+            to {
                 right: 550px;
                 top: 130px;
             }
         }
+
         @keyframes animation2 {
-            from{
+            from {
                 right: 160px;
                 bottom: 0px;
             }
-            to{
+            to {
                 right: 160px;
                 bottom: 280px;
             }
@@ -121,8 +136,21 @@
             color: white;
         }
 
-        /*main>section>section>section{ !*!/-------------------------------------------------------------*!
-            width: 100%;
+        #section2 > section { /*=========================== GALLERY SLIDE ==================================================*/
+            width: 700px;
+            height: 400px;
+            position: absolute;
+            left: 40vw;
+            right: 0;
+            top: 0;
+            bottom: 10px;
+            margin: auto;
+            overflow: hidden;
+            border: 5px solid #d7c6c6d6;
+        }
+
+        #section2 > section > section {
+            width: 400%;
             height: 100%;
             display: flex;
             animation-name: slideme;
@@ -131,51 +159,49 @@
             animation-iteration-count: infinite;
         }
 
-        main>section>section>section>div{
-            position: relative;
-            left: 500px;
-            bottom: 500px;
+        #section2 > section > section > div {
             width: 100%;
         }
-        main>section>section>section>div:nth-child(1){
-            background: url("assets/Images/gallery1.jpeg");
+
+        #section2 > section > section > div:nth-child(1) {
+            background: url("assets/images/11.jpg");
             background-size: cover;
             background-position: center;
         }
 
-        main>section>section>section>div:nth-child(2){
-            background: url("assets/Images/gallery2.jpeg");
+        #section2 > section > section > div:nth-child(2) {
+            background: url("assets/images/gallery1.jpeg");
             background-size: cover;
             background-position: center;
         }
 
-        main>section>section>section>div:nth-child(3){
-            background: url("assets/Images/11.jpg");
+        #section2 > section > section > div:nth-child(3) {
+            background: url("assets/images/gallery2.jpeg");
             background-size: cover;
             background-position: center;
         }
 
-        main>section>section>section>div:nth-child(4){
-            background: url("assets/Images/normal.jpg");
+        #section2 > section > section > div:nth-child(4) {
+            background: url("assets/images/hotel_Management_System1.png");
             background-size: cover;
             background-position: center;
         }
 
         @keyframes slideme {
-            0%,15%{
+            0%, 15% {
                 transform: translateX(0);
             }
-            25%,40%{
+            25%, 40% {
                 transform: translateX(-25%);
             }
-            50%,70%{
+            50%, 70% {
                 transform: translateX(-50%);
             }
 
-            80%,100%{
+            80%, 100% {
                 transform: translateX(-75%);
             }
-        }*/
+        }
 
         #section2 {
             width: 95%;
@@ -424,12 +450,28 @@
             left: 22px;
         }
 
-        /*#section4>img{================================================================================
+        #section4 > div > a { /*================================================================================*/
+            background: linear-gradient(to bottom, #ffffff, #dcdbeb, #b9b8d7, #9497c4, #6c78b1, #4f669c, #2f5587, #004472, #003754, #002936, #041a1d, #020404);
             border-radius: 20px;
         }
-        #img1 :hover {
-            background: #3a483b;
-        }=============================================================================================*/
+
+        #section4 > div {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            /* height: 335px; */
+            margin-top: 82px;
+
+        }
+
+        #section4 > div > a:hover {
+            background-color: lightgreen;
+            padding: 5px;
+            background-clip: padding-box;
+            transition: all 1s;
+        }
+
         #section5 {
             width: 95%;
             height: 80vh;
@@ -453,6 +495,51 @@
             position: relative;
             left: 22px;
         }
+
+        main> section>section:nth-child(5) > div{
+            position: relative;
+            width: 40vw;
+            height: 50vh;
+            background-color: yellow;
+        }
+        #div1{
+            left: 70px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        #div2{
+            left: 760px;
+            bottom: 412px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        #div1 > h3{
+            position: relative;
+            font-family: Ubuntu;
+            font-size: 35px;
+            font-weight: bolder;
+            color: black;
+            left: 220px;
+            top: 154px;
+        }
+        #div2 > h3{
+            position: relative;
+            font-family: Ubuntu;
+            font-size: 35px;
+            font-weight: bolder;
+            color: black;
+            left: 190px;
+            top: 150px;
+        }
+        #div1:hover{
+            transition: all 0.5s;
+            background: #7c807c;
+        }
+        #div2:hover{
+            transition: all 0.5s;
+            background: #7c807c;
+        }
+
     </style>
 
 </head>
@@ -460,13 +547,16 @@
 <body>
 
 <header>
-    <ul>
-        <li>Home</li>
-        <li>Education</li>
-        <li>Projects</li>
-        <li>Reviews</li>
-        <li>Contact</li>
-    </ul>
+    <div>
+        <ul>
+            <li><a href="#section1">Home</a></li>
+            <li><a href="#section3">Education</a></li>
+            <li><a href="#section5">Projects</a></li>
+            <li>Reviews</li>
+            <li>Contact</li>
+        </ul>
+    </div>
+
 </header>
 
 <main>
@@ -503,13 +593,16 @@
             </p>
 
             <section>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+                <section>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </section>
             </section>
 
-            <img alt="Picture with my friends" src="assets/Images/gallery1.jpeg">
+
+            <!--<img alt="Picture with my friends" src="assets/Images/gallery1.jpeg">-->
 
         </section>
         <!-- <hr>-->
@@ -552,50 +645,35 @@
         <section ID="section4">
             <h2>Technologies</h2>
             <p>I'm working..</p>
-            <img ID="img1" alt="Java Icon" border="1" src="assets/Images/java-logo.png" usemap="#java" width="220">
-            <img ID="img2" alt="CSS Icon" border="1" src="assets/Images/css3-logo.png" usemap="#css" width="300">
-            <img ID="img3" alt="HTML Icon" border="1" src="assets/Images/html-logo.png" usemap="#html" width="220">
-            <img ID="img4" alt="MYSQL Icon" border="1" src="assets/Images/mysql.png" usemap="#mysql" width="230">
-            <img ID="img6" alt="Hibernate Icon" border="1" src="assets/Images/hibernate.png" usemap="#hibernate"
-                 width="230">
+            <div>
+                <a href="https://docs.oracle.com/en/java/" target="_blank"><img alt="Java Icon" border="1"
+                                                                                height="230"
+                                                                                src="assets/Images/java-logo.png"
+                                                                                width="220"></a>
+                <a href="https://docs.oracle.com/cd/E92519_02/pt856pbr3/eng/pt/tmap/concept_CascadingStyleSheets_CSS.html?pli=ul_d34e52_tmap"
+                   target="_blank"><img alt="CSS Icon" border="1" height="230" src="assets/Images/css3-logo.png"
+                                        usemap="#css" width="230"></a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" target="_blank"><img alt="HTML Icon"
+                                                                                                         border="1"
+                                                                                                         height="230"
+                                                                                                         src="assets/Images/html-logo.png"
+                                                                                                         usemap="#html"
+                                                                                                         width="220"></a>
+                <a href="https://www.jetbrains.com/datagrip/features/?source=google&medium=cpc&campaign=15034928317&gclid=Cj0KCQiAhf2MBhDNARIsAKXU5GQjxxe5s10iwO_Wa4PKm1qwIAACIDTy7S1VZkCJiZs6YJmmlLNkQqUaAmp6EALw_wcB"
+                   target="_blank"><img alt="MYSQL Icon" border="1" src="assets/Images/mysql.png" usemap="#mysql"
+                                        width="230"></a>
+                <a href="https://docs.jboss.org/hibernate/orm/5.6/userguide/html_single/Hibernate_User_Guide.html"
+                   target="_blank"><img alt="Hibernate Icon" border="1" src="assets/Images/hibernate.png"
+                                        usemap="#hibernate" width="230"></a>
+            </div>
 
-            <map name="#java">
-                <area alt="Go To Oracle Site" coords="0,0,300,400" href="https://docs.oracle.com/en/java/" shape="rect"
-                      target="_blank">
-            </map>
-
-            <map name="#css">
-                <area alt="Go To Oracle Site" coords="0,0,300,400"
-                      href="https://docs.oracle.com/cd/E92519_02/pt856pbr3/eng/pt/tmap/concept_CascadingStyleSheets_CSS.html?pli=ul_d34e52_tmap"
-                      shape="rect"
-                      target="_blank">
-            </map>
-
-            <map name="#html">
-                <area alt="Go To Oracle Site" coords="0,0,300,400"
-                      href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element"
-                      shape="rect"
-                      target="_blank">
-            </map>
-
-            <map name="#mysql">
-                <area alt="Go To Oracle Site" coords="0,0,300,400"
-                      href="https://www.jetbrains.com/datagrip/features/?source=google&medium=cpc&campaign=15034928317&gclid=Cj0KCQiAhf2MBhDNARIsAKXU5GQjxxe5s10iwO_Wa4PKm1qwIAACIDTy7S1VZkCJiZs6YJmmlLNkQqUaAmp6EALw_wcB"
-                      shape="rect" target="_blank">
-            </map>
-
-            <map name="#hibernate">
-                <area alt="Go To Hibernate Site" coords="0,0,300,400"
-                      href="https://docs.jboss.org/hibernate/orm/5.6/userguide/html_single/Hibernate_User_Guide.html"
-                      shape="rect" target="_blank">
-            </map>
         </section>
         <!--<hr>-->
 
         <section ID="section5">
             <h2>Projects</h2>
             <p>I have Done..</p>
-            <img alt="Student Management System" src="assets/Images/Student%20M.S..png" width="400">
+            <!--<img alt="Student Management System" src="assets/Images/Student%20M.S..png" width="400">
             <img alt="WhaleSale System" src="assets/Images/foodcity.png" width="400">
             <img alt="Hotel Management System" src="assets/Images/hotel_Management_System1.png" width="400">
             <h3>CSS Assignments I have Done</h3>
@@ -618,37 +696,51 @@
                 <li>
                     <a href="myProjects/CSS/Assignment%2006/index.html">Assignment 06 (Transition)</a>
                 </li>
-            </ol>
+                <li>
+                    <a href="myProjects/CSS/Assignment%2007/index.html">Assignment 07 (Animation)</a>
+                </li>
+                <li>
+                    <a href="myProjects/CSS/Assignment%2008/index.html">Assignment 08 (Animation)</a>
+                </li>
+            </ol>-->
+            <div ID="div1">
+                <h3>Projects</h3>
+            </div>
+            <div  ID="div2">
+                <h3>CSS Assignments</h3>
+            </div>
         </section>
-        <hr>
+        <!--<hr>-->
     </section>
 
 </main>
 
 <footer>
 
-    <p>W.G.Waruna Sandesh</p>
-    <p><a href="tel:+94713402092"> Call me</a> 071 3402092</p>
-    <p><a href="mailto:warunasandesh2001@gmail.com"> Click to send me a Mail/warunasnadesh20001@gmail.com</a></p>
-    <p>Matara ,Sri Lanka</p>
+    <section ID="section6">
+        <p>W.G.Waruna Sandesh</p>
+        <p><a href="tel:+94713402092"> Call me</a> 071 3402092</p>
+        <p><a href="mailto:warunasandesh2001@gmail.com"> Click to send me a Mail/warunasnadesh20001@gmail.com</a></p>
+        <p>Matara ,Sri Lanka</p>
 
-    <form action="">
-        <fieldset>
-            <legend>Send Message</legend>
-            <br>
-            <label for="txtName">Your Name</label>
-            <input id="txtName" type="text"><br><br>
+        <form action="">
+            <fieldset>
+                <legend>Send Message</legend>
+                <br>
+                <label for="txtName">Your Name</label>
+                <input id="txtName" type="text"><br><br>
 
-            <label for="txtEmail">E-mail</label>
-            <input id="txtEmail" type="text"><br><br>
+                <label for="txtEmail">E-mail</label>
+                <input id="txtEmail" type="text"><br><br>
 
-            <label for="txtAdd">Address</label>
-            <textarea id="txtAdd">
+                <label for="txtAdd">Address</label>
+                <textarea id="txtAdd">
 
             </textarea>
-            <button>Submit</button>
-        </fieldset>
-    </form>
+                <button>Submit</button>
+            </fieldset>
+        </form>
+    </section>
 
 </footer>
 </body>
