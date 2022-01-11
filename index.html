@@ -26,7 +26,7 @@
         header {
             position: fixed;
             width: 100vw;
-            height: 80px;
+            height: 60px;
             box-shadow: -2px 6px 9px -4px #917a7a;
             background-color: black;
             color: gold;
@@ -41,7 +41,7 @@
         header > div > ul {
             position: absolute;
             right: 30px;
-            top: 0;
+            top: -5px;
             font-size: 24px;
             font-family: 'Lobster', cursive;
             list-style: none;
@@ -515,7 +515,7 @@
             position: relative;
             text-decoration: none;
             left: 760px;
-            bottom: 385px;
+            bottom: 415px;
             cursor: pointer;
         }
         #div1 >div> h3{
@@ -547,7 +547,6 @@
             transition: all 0.5s;
             opacity: 0.8;
             border-inline: yellow solid 5px;
-            /*background: #7c807c;*/
         }
 
         #div1>div{
@@ -563,6 +562,40 @@
             background-position: center;
         }
 
+        #section6{
+            /*overflow-x: hidden;*/
+            background-color: #2e3136;
+            width: 100%;
+            height: 500px;
+        }
+
+        #section6 > div:nth-child(1){
+            position: relative;
+            left: 10%;
+            top: 20%;
+            color: white;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            font-family: "Times New Roman";
+        }
+
+        #section6 > div:nth-child(2){
+            position: relative;
+            width: 2px;
+            height: 100%;
+            background-color: white;
+            left: 50vw;
+            bottom: 50%;
+        }
+        #section6 > div:nth-child(3){
+            position: relative;
+            width: 38%;
+            height: 400px;
+            background-color: white;
+            left: 55vw;
+            bottom: 140%;
+        }
     </style>
 
 </head>
@@ -746,28 +779,35 @@
 <footer>
 
     <section ID="section6">
-        <p>W.G.Waruna Sandesh</p>
-        <p><a href="tel:+94713402092"> Call me</a> 071 3402092</p>
-        <p><a href="mailto:warunasandesh2001@gmail.com"> Click to send me a Mail/warunasnadesh20001@gmail.com</a></p>
-        <p>Matara ,Sri Lanka</p>
+        <div>
+            <p>W.G.Waruna Sandesh</p>
+            <p><a href="tel:+94713402092">Phone</a>(+94 71 3402092)</p>
+            <p><a href="mailto:warunasandesh2001@gmail.com">Mail</a>(warunasnadesh2001@gmail.com)</p>
+            <p>Matara ,Sri Lanka</p>
+        </div>
 
-        <form action="">
-            <fieldset>
-                <legend>Send Message</legend>
-                <br>
-                <label for="txtName">Your Name</label>
-                <input id="txtName" type="text"><br><br>
+        <div></div>
 
-                <label for="txtEmail">E-mail</label>
-                <input id="txtEmail" type="text"><br><br>
+        <div>
+            <form action="">
+                <fieldset>
+                    <legend>Send Message</legend>
+                    <br>
+                    <label for="txtName">Your Name</label>
+                    <input id="txtName" type="text"><br><br>
 
-                <label for="txtAdd">Address</label>
-                <textarea id="txtAdd">
+                    <label for="txtEmail">E-mail</label>
+                    <input id="txtEmail" type="text"><br><br>
+
+                    <label for="txtAdd">Address</label>
+                    <textarea id="txtAdd">
 
             </textarea>
-                <button>Submit</button>
-            </fieldset>
-        </form>
+                    <button>Submit</button>
+                </fieldset>
+            </form>
+        </div>
+
     </section>
 
 </footer>
