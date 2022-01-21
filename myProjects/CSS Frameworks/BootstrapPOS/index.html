@@ -27,12 +27,79 @@
                 <li class="nav-item">
                     <a aria-current="page" class="nav-link active" href="#">Items</a>
                 </li>
-                <li class="nav-item">
-                    <a aria-current="page" class="nav-link active" href="#">Customers</a>
-                </li>
             </ul>
         </div>
     </div>
 </nav>
+
+<h2 class="text-dark" >Customer</h2>
+
+<section>
+    <span class="badge bg-dark">Add new customer</span>
+    <span class="badge bg-danger">View all customers</span>
+<div class="align bg-light" >
+    <h4>Search Customer</h4>
+    <form class="row gy-2 gx-3 align-items-center">
+        <div class="col-auto">
+            <label class="visually-hidden" for="autoSizingInput">Name</label>
+            <input type="text" class="form-control" id="autoSizingInput" placeholder="search" style="width: 500px">
+        </div>
+        <div class="col-auto">
+            <label class="visually-hidden" for="autoSizingSelect">Preference</label>
+            <select class="form-select" id="autoSizingSelect">
+                <option value="1">Name</option>
+                <option value="2">NIC</option>
+                <option value="3">Address</option>
+            </select>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+        <div>
+            <button type="reset" class="btn btn-primary" style="background: #ee0216">Delete</button>
+            <button type="button" class="btn btn-primary" style="background: #565e64">Clear</button>
+        </div>
+    </form>
+</div>
+</section>
+
+<section>
+    <table class="table table-dark table-striped">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">NIC</th>
+            <th scope="col">Address</th>
+            <th scope="col">Contact</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">C001</th>
+            <td>Sameera</td>
+            <td>945862075V</td>
+            <td>Kadawatha</td>
+            <td>0715486957</td>
+        </tr>
+        <tr>
+            <th scope="row">C002</th>
+            <td>Kamal</td>
+            <td>954578215V</td>
+            <td>Matara</td>
+            <td>0764581257</td>
+        </tr>
+        <tr>
+            <th scope="row">C003</th>
+            <td>Saman</td>
+            <td>@200204500854</td>
+            <td>Galle</td>
+            <td>0754562131</td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
