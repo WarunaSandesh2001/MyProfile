@@ -6,7 +6,8 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="overflow-hidden">
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">POS System</a>
@@ -34,18 +35,52 @@
     </div>
 </nav>
 
-<h3>Order Form</h3>
+<h3 class="mt-4">Order Form</h3>
 <section class="row">
 
-    <div class="col bg-info" style="width: 500px; height: 500px;">
-        <h5>Invoice Details</h5>
+    <div class="shadow-lg col bg-info mt-2" style="width: 500px; height: 500px;">
+        <h5 class="mt-2">Invoice Details</h5>
+        <div class="row">
+            <div class="col-md-6 mt-1">
+                <label for="inputOrderID" class="form-label">Order ID</label>
+                <input type="email" class="form-control" id="inputOrderID">
+            </div>
+            <div class="col-md-6 mt-1">
+                <label for="inputDate" class="form-label">Password</label>
+                <input type="date" class="form-control" id="inputDate">
+            </div>
+            <div class="col-md-6 mt-2">
+                <label for="inputState" class="form-label">Customer ID</label>
+                <select id="inputState" class="form-select">
+                    <option>C001</option>
+                    <option>C002</option>
+                    <option>C003</option>
+                </select>
+            </div>
+            <div class="col-md-6 mt-2">
+                <label for="inputId" class="form-label">ID</label>
+                <input type="text" class="form-control" id="inputId">
+            </div>
+            <div class="col-md-6 mt-2">
+                <label for="inputName" class="form-label">Name</label>
+                <input type="text" class="form-control" id="inputName">
+            </div>
+            <div class="col-md-6 mt-2">
+                <label for="inputSalary" class="form-label">Salary</label>
+                <input type="text" class="form-control" id="inputSalary">
+            </div>
+            <div class="col-md-12 mt-2">
+                <label for="inputAddress" class="form-label">Address</label>
+                <input type="text" class="form-control" id="inputAddress">
+            </div>
+        </div>
     </div>
 
-    <div class="col" style="width: 500px; height: 500px; background-color:#565e64">
+    <div class="shadow-lg col mt-2" style="width: 500px; height: 500px; background-color:#565e64">
         <h5>Item Select</h5>
     </div>
 
-    <div class="col" style="width: 500px; height: 500px; background-color:black">
+    <div class="shadow-lg col mt-2" style="width: 500px; height: 500px; background-color:black">
     </div>
 
 </section>

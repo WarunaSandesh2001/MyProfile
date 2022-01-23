@@ -39,12 +39,12 @@
 
 <section class="container overflow-hidden">
     <div class="container">
-            <button class="badge bg-dark mt-1 ">Add new Item</button>
+            <button class="badge bg-dark mt-1 btn btn-primary" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Add new Item</button>
             <button class="badge bg-danger mt-1 ">View all Items</button>
     </div>
 
     <div class="align bg-light mt-1" >
-        <h4 class="mt-3">Search Item</h4>
+        <h4 class="mt-3" style="background-color: #4ed429">Search Item</h4>
 
         <form class="row gy-2 gx-3 align-items-center">
             <div class="col-auto">
@@ -101,6 +101,50 @@
         </tbody>
     </table>
 </section>
+
+<section>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content"  style="background-color: #b8dffa">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="color: #1d33ab">New Item</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="itemCode" class="col-form-label">Item Code:</label>
+                            <input type="text" class="form-control" id="itemCode">
+                        </div>
+                        <div class="mb-3">
+                            <label for="name-text" class="col-form-label">Item Name:</label>
+                            <input type="text" class="form-control" id="name-text">
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="col-form-label">Item Price:</label>
+                            <input type="text" class="form-control" id="price">
+                        </div>
+                        <div class="mb-3">
+                            <label for="qty" class="col-form-label">Item Quantity:</label>
+                            <input type="text" class="form-control" id="qty">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: #565e64">Close</button>
+                    <button type="button" class="btn btn-primary" style="background-color: darkgreen">Renew</button>
+                    <button type="button" class="btn btn-primary" style="background-color: darkblue">Save Item</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
 
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
