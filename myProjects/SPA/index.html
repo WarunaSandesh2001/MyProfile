@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>POS System</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body  class="overflow-hidden">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">POS System</a>
+        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item" id="navHome">
+                    <a aria-current="page" class="nav-link active" style="cursor: pointer">Home</a>
+                </li>
+                <li class="nav-item" id="navCustomer">
+                    <a aria-current="page" class="nav-link active" style="cursor: pointer">Customers</a>
+                </li>
+                <li class="nav-item" id="navOrders">
+                    <a aria-current="page" class="nav-link active" style="cursor: pointer">Orders</a>
+                </li>
+                <li class="nav-item" id="navItem">
+                    <a aria-current="page" class="nav-link active" style="cursor: pointer">Items</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<section id="home">
+    <div class="text-center"style="height: 100vh; width: 100vw; background-color: black">
+        <img alt="wholesale image" class="img-fluid mt-5" src="assets/img/wholesaleAPI.jpg">
+        <h1 class="text-center mt-5" style="color: white">Sandesh WholeSales</h1>
+    </div>
+</section> <!--Home-->
+<section id="customer">
+    <h2 class="text-dark mt-4">Customer</h2>
+
+    <section class="container overflow-hidden">
+        <button class="badge bg-dark mt-1 btn btn-primary" data-bs-target="#exampleModal" data-bs-toggle="modal"
+                data-bs-whatever="@getbootstrap" type="button">Add new Customer
+        </button>
+        <button class="badge bg-danger mt-1">View all customers</button>
+        <div class="align bg-light mt-1">
+            <h4 class="mt-3" style="background-color: #4ed429">Search Customer</h4>
+
+            <form class="row gy-2 gx-3 align-items-center">
+                <div class="col-auto">
+                    <label class="visually-hidden" for="autoSizingInput">Name</label>
+                    <input class="form-control" id="autoSizingInput" placeholder="search" style="width: 500px"
+                           type="text">
+                </div>
+                <div class="col-auto">
+                    <label class="visually-hidden" for="autoSizingSelect">Preference</label>
+                    <select class="form-select" id="autoSizingSelect">
+                        <option value="1">Name</option>
+                        <option value="2">NIC</option>
+                        <option value="3">Address</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+                <div>
+                    <button class="btn btn-primary mt-1" style="background: #ee0216" type="reset">Delete</button>
+                    <button class="btn btn-primary mt-1" style="background: #1d33ab" type="reset">Details</button>
+                    <button class="btn btn-primary mt-1" style="background: #565e64" type="button">Clear</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section>
+
+        <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content" style="background-color: #b8dffa">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel" style="color: #1d33ab">New Customer</h5>
+                        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label class="col-form-label" for="itemCode">Customer ID:</label>
+                                <input class="form-control" id="itemCode" type="text">
+                            </div>
+                            <div class="mb-3">
+                                <label class="col-form-label" for="name-text">Customer Name:</label>
+                                <input class="form-control" id="name-text" type="text">
+                            </div>
+                            <div class="mb-3">
+                                <label class="col-form-label" for="price">Customer Address:</label>
+                                <input class="form-control" id="price" type="text">
+                            </div>
+                            <div class="mb-3">
+                                <label class="col-form-label" for="qty">Customer Salary:</label>
+                                <input class="form-control" id="qty" type="text">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: #565e64"
+                                type="button">Close
+                        </button>
+                        <button class="btn btn-primary" style="background-color: darkgreen" type="button">Renew</button>
+                        <button class="btn btn-primary" style="background-color: darkblue" type="button">Save Customer
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="shadow-lg">
+        <table class="table table-dark table-striped table-hover mt-5">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">NIC</th>
+                <th scope="col">Address</th>
+                <th scope="col">Contact</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">C001</th>
+                <td>Sameera</td>
+                <td>945862075V</td>
+                <td>Kadawatha</td>
+                <td>0715486957</td>
+            </tr>
+            <tr>
+                <th scope="row">C002</th>
+                <td>Kamal</td>
+                <td>954578215V</td>
+                <td>Matara</td>
+                <td>0764581257</td>
+            </tr>
+            <tr>
+                <th scope="row">C003</th>
+                <td>Saman</td>
+                <td>@200204500854</td>
+                <td>Galle</td>
+                <td>0754562131</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</section> <!--customer-->
+<section id="item">
+
+
+    <div class="m-2">
+        <h2 class="text-dark mt-4">Item</h2>
+    </div>
+
+
+    <section class="container overflow-hidden">
+        <div class="container flex-row d-flex justify-content-end ">
+            <button class="badge bg-dark mt-1 btn btn-primary" data-bs-target="#exampleModal" data-bs-toggle="modal"
+                    data-bs-whatever="@getbootstrap" type="button">Add new Item
+            </button>
+            <button class="badge bg-danger mt-1 ">View all Items</button>
+        </div>
+
+        <div class="align bg-light mt-1">
+            <h4 class="mt-3" style="background-color: #4ed429">Search Item</h4>
+
+            <form class="row gy-2 gx-3 align-items-center">
+                <div class="col-auto">
+                    <label class="visually-hidden" for="autoSizingInput">Name</label>
+                    <input class="form-control" id="autoSizingInput" placeholder="search" style="width: 500px"
+                           type="text">
+                </div>
+                <div class="col-auto">
+                    <label class="visually-hidden" for="autoSizingSelect">Preference</label>
+                    <select class="form-select" id="autoSizingSelect">
+                        <option value="1">Name</option>
+                        <option value="2">price</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+                <div>
+                    <button class="btn btn-primary mt-1" style="background: #ee0216" type="reset">Delete</button>
+                    <button class="btn btn-primary mt-1" style="background: #565e64" type="button">Clear</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section class="shadow-lg">
+        <table class="table table-bordered table-striped table-hover mt-5 bg-secondary">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price (Rs)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">I001</th>
+                <td>Neckless</td>
+                <td>1542</td>
+                <td>4500.00</td>
+            </tr>
+            <tr>
+                <th scope="row">I002</th>
+                <td>Silver Watch</td>
+                <td>50</td>
+                <td>14 500.00</td>
+            </tr>
+            <tr>
+                <th scope="row">I003</th>
+                <td>DVD Player</td>
+                <td>21</td>
+                <td>150 000.00</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+
+        <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content" style="background-color: #b8dffa">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel" style="color: #1d33ab">New Item</h5>
+                        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label class="col-form-label" for="iCode">Item Code:</label>
+                                <input class="form-control" id="iCode" type="text">
+                            </div>
+                            <div class="mb-3">
+                                <label class="col-form-label" for="ntext">Item Name:</label>
+                                <input class="form-control" id="ntext" type="text">
+                            </div>
+                            <div class="mb-3">
+                                <label class="col-form-label" for="Iprice">Item Price:</label>
+                                <input class="form-control" id="Iprice" type="text">
+                            </div>
+                            <div class="mb-3">
+                                <label class="col-form-label" for="Iqty">Item Quantity:</label>
+                                <input class="form-control" id="Iqty" type="text">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: #565e64"
+                                type="button">Close
+                        </button>
+                        <button class="btn btn-primary" style="background-color: darkgreen" type="button">Renew</button>
+                        <button class="btn btn-primary" style="background-color: darkblue" type="button">Save Item
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section> <!--Item-->
+<section  id="orders">
+    <h3 class="mt-4">Order Form</h3>
+    <section class="row d-flex flex-row justify-content-around">
+
+        <div class="shadow-lg col-4 mt-2" style="width: 500px; height:400px; border: 3px solid #4ed429">
+            <div style="background-color: #1a1e21; height: 26px; width: 100%">
+                <h5 class="mt-2" style="color: white">Invoice Details</h5>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mt-1">
+                    <label class="form-label" for="inputOrderID">Order ID</label>
+                    <input class="form-control" id="inputOrderID" type="email">
+                </div>
+                <div class="col-md-6 mt-1">
+                    <label class="form-label" for="inputDate">Date</label>
+                    <input class="form-control" id="inputDate" type="date">
+                </div>
+                <div class="col-md-6 mt-2">
+                    <label class="form-label" for="inputState">Customer ID</label>
+                    <select class="form-select" id="inputState">
+                        <option>C001</option>
+                        <option>C002</option>
+                        <option>C003</option>
+                    </select>
+                </div>
+                <div class="col-md-6 mt-2">
+                    <label class="form-label" for="inputId">ID</label>
+                    <input class="form-control" id="inputId" type="text">
+                </div>
+                <div class="col-md-6 mt-2">
+                    <label class="form-label" for="inputName">Name</label>
+                    <input class="form-control" id="inputName" type="text">
+                </div>
+                <div class="col-md-6 mt-2">
+                    <label class="form-label" for="inputSalary">Salary</label>
+                    <input class="form-control" id="inputSalary" type="text">
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label class="form-label" for="inputAddress">Address</label>
+                    <input class="form-control" id="inputAddress" type="text">
+                </div>
+            </div>
+        </div>
+
+        <div class="shadow-lg col-4 mt-2" style="width: 500px; height: 400px; background-color:#a8a8a8">
+            <div style="background-color: #1a1e21; height: 28px; width: 100%">
+                <h5 class="mt-2" style="color: white">Item Select</h5>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6 mt-2">
+                    <label class="form-label" for="selectItem">Item</label>
+                    <select class="form-select" id="selectItem">
+                        <option>I001</option>
+                        <option>I002</option>
+                        <option>I003</option>
+                    </select>
+                </div>
+                <div class="col-md-6 mt-1">
+                    <label class="form-label" for="inputItemCode">Item Code</label>
+                    <input class="form-control" id="inputItemCode" type="text">
+                </div>
+                <div class="col-md-4 mt-2">
+                    <label class="form-label" for="inputIName">Name</label>
+                    <input class="form-control" id="inputIName" type="text">
+                </div>
+                <div class="col-md-4 mt-2">
+                    <label class="form-label" for="inputQTY">Qty On Hand</label>
+                    <input class="form-control" id="inputQTY" type="text">
+                </div>
+                <div class="col-md-4 mt-2">
+                    <label class="form-label" for="inputPrice">Price</label>
+                    <input class="form-control" id="inputPrice" type="text">
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label class="form-label" for="inputOrderQTY">Order Quantity</label>
+                    <input class="form-control" id="inputOrderQTY" type="text">
+                </div>
+                <div class="row mt-3 m-1">
+                    <button class="btn btn-primary mt-1"
+                            style="font-family: Times; font-weight: bolder; background-color: #14b414"
+                            type="reset">Add To Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="shadow-lg col-3 mt-2"
+             style="width: 500px; height: 400px; background-color:#020101;  border: 3px solid #000000">
+            <div class="mt-3 m-4">
+                <h5 style="color: #fcfcfc; font-family: 'Adobe Fangsong Std R'; font-size: 35px">Total Price :
+                    Rs.50,000.00 </h5>
+                <h5 style="color: #ce0303; font-family: 'Times New Roman'; font-size: 35px">Sub Total : Rs.48,570.00 </h5>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mt-2">
+                    <label class="form-label" for="inputCash" style="color: white">Cash</label>
+                    <input class="form-control" id="inputCash" type="text">
+                </div>
+
+                <div class="col-md-6 mt-2">
+                    <label class="form-label" for="inputDiscount" style="color: white">Discount</label>
+                    <input class="form-control" id="inputDiscount" type="text">
+                </div>
+
+                <div class="col-md-12 mt-2">
+                    <label class="form-label" for="inputBalance" style="color: white">Balance</label>
+                    <input class="form-control" id="inputBalance" type="text">
+                </div>
+
+                <div class="d-flex flex-row justify-content-center mt-4">
+                    <button class="btn btn-primary mt-1"
+                            style="font-weight: bolder; background-color: #031dc9"
+                            type="reset">Purchase
+                    </button>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+    <section class="shadow-lg">
+        <table class="table table-dark table-striped table-hover mt-5 bg-light">
+            <thead>
+            <tr>
+                <th scope="col">Item Code</th>
+                <th scope="col">Item Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price(per unit)</th>
+                <th scope="col">Total (Rs)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">I001</th>
+                <td>Mouse</td>
+                <td>50</td>
+                <td>1000.00</td>
+                <td>50,000.00</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</section> <!--Orders-->
+
+<script>
+    document.getElementById("navHome").addEventListener("click", function () {
+        document.getElementById("home").style.display="block";
+        document.getElementById("customer").style.display="none";
+        document.getElementById("item").style.display="none";
+        document.getElementById("orders").style.display="none";
+    });
+
+    document.getElementById("navCustomer").addEventListener("click", function () {
+        document.getElementById("home").style.display="none";
+        document.getElementById("customer").style.display="block";
+        document.getElementById("item").style.display="none";
+        document.getElementById("orders").style.display="none";
+    });
+
+    document.getElementById("navItem").addEventListener("click", function () {
+        document.getElementById("home").style.display="none";
+        document.getElementById("customer").style.display="none";
+        document.getElementById("item").style.display="block";
+        document.getElementById("orders").style.display="none";
+    });
+
+    document.getElementById("navOrders").addEventListener("click", function () {
+        document.getElementById("home").style.display="none";
+        document.getElementById("customer").style.display="none";
+        document.getElementById("item").style.display="none";
+        document.getElementById("orders").style.display="block";
+    });
+</script>
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
