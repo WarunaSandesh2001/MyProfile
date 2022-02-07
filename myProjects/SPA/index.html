@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body  class="overflow-hidden">
+<body >
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -89,20 +89,25 @@
                     <div class="modal-body">
                         <form>
                             <div class="mb-3">
-                                <label class="col-form-label" for="itemCode">Customer ID:</label>
-                                <input class="form-control" id="itemCode" type="text">
+                                <label class="col-form-label" for="custID">Customer ID:</label>
+                                <input class="form-control" id="custID" type="text">
                             </div>
                             <div class="mb-3">
-                                <label class="col-form-label" for="name-text">Customer Name:</label>
-                                <input class="form-control" id="name-text" type="text">
+                                <label class="col-form-label" for="custName">Customer Name:</label>
+                                <input class="form-control" id="custName" type="text">
                             </div>
                             <div class="mb-3">
-                                <label class="col-form-label" for="price">Customer Address:</label>
-                                <input class="form-control" id="price" type="text">
+                                <label class="col-form-label" for="nic">Customer NIC:</label>
+                                <input class="form-control" id="nic" type="text">
                             </div>
                             <div class="mb-3">
-                                <label class="col-form-label" for="qty">Customer Salary:</label>
-                                <input class="form-control" id="qty" type="text">
+                                <label class="col-form-label" for="address">Customer Address:</label>
+                                <input class="form-control" id="address" type="text">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="col-form-label" for="contact">Customer Contact:</label>
+                                <input class="form-control" id="contact" type="text">
                             </div>
                         </form>
                     </div>
@@ -111,7 +116,7 @@
                                 type="button">Close
                         </button>
                         <button class="btn btn-primary" style="background-color: darkgreen" type="button">Renew</button>
-                        <button class="btn btn-primary" style="background-color: darkblue" type="button">Save Customer
+                        <button class="btn btn-primary" style="background-color: darkblue" type="button" id="btnSaveOrUpdate">Save Customer
                         </button>
                     </div>
                 </div>
@@ -120,7 +125,7 @@
     </section>
 
     <section class="shadow-lg">
-        <table class="table table-dark table-striped table-hover mt-5">
+        <!--<table class="table table-dark table-striped table-hover mt-5">
             <thead>
             <tr>
                 <th scope="col">ID</th>
@@ -130,7 +135,7 @@
                 <th scope="col">Contact</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="customerTable">
             <tr>
                 <th scope="row">C001</th>
                 <td>Sameera</td>
@@ -153,7 +158,24 @@
                 <td>0754562131</td>
             </tr>
             </tbody>
-        </table>
+        </table>-->
+        <div class="col">
+            <table class="table table-dark table-striped table-hover mt-5">
+                <thead class="bg-danger text-white">
+                <tr>
+                    <th>Customer ID</th>
+                    <th>Customer Name</th>
+                    <th>NIC</th>
+                    <th>Address</th>
+                    <th>Contact</th>
+                </tr>
+                </thead>
+                <tbody id="customerTable">
+
+
+                </tbody>
+            </table>
+        </div>
     </section>
 </section> <!--customer-->
 <section id="item">
@@ -166,7 +188,7 @@
 
     <section class="container overflow-hidden">
         <div class="container flex-row d-flex justify-content-end ">
-            <button class="badge bg-dark mt-1 btn btn-primary" data-bs-target="#exampleModal" data-bs-toggle="modal"
+            <button class="badge bg-dark mt-1 btn btn-primary" data-bs-target="#exampleModal1" data-bs-toggle="modal"
                     data-bs-whatever="@getbootstrap" type="button">Add new Item
             </button>
             <button class="badge bg-danger mt-1 ">View all Items</button>
@@ -234,11 +256,11 @@
 
     <section>
 
-        <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" tabindex="-1">
+        <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal1" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content" style="background-color: #b8dffa">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel" style="color: #1d33ab">New Item</h5>
+                        <h5 class="modal-title" id="exampleModalLabel2" style="color: #1d33ab">New Item</h5>
                         <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
                     </div>
                     <div class="modal-body">
@@ -248,8 +270,8 @@
                                 <input class="form-control" id="iCode" type="text">
                             </div>
                             <div class="mb-3">
-                                <label class="col-form-label" for="ntext">Item Name:</label>
-                                <input class="form-control" id="ntext" type="text">
+                                <label class="col-form-label" for="itemName">Item Name:</label>
+                                <input class="form-control" id="itemName" type="text">
                             </div>
                             <div class="mb-3">
                                 <label class="col-form-label" for="Iprice">Item Price:</label>
@@ -266,7 +288,7 @@
                                 type="button">Close
                         </button>
                         <button class="btn btn-primary" style="background-color: darkgreen" type="button">Renew</button>
-                        <button class="btn btn-primary" style="background-color: darkblue" type="button">Save Item
+                        <button class="btn btn-primary" style="background-color: darkblue" type="button" id="saveItem">Save Item
                         </button>
                     </div>
                 </div>
@@ -425,6 +447,9 @@
     </section>
 </section> <!--Orders-->
 
+<script src="assets/jQuery/jquery-3.6.0.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 <script>
     document.getElementById("navHome").addEventListener("click", function () {
         document.getElementById("home").style.display="block";
@@ -453,8 +478,41 @@
         document.getElementById("item").style.display="none";
         document.getElementById("orders").style.display="block";
     });
+
+    /*Save Customer*/
+    $("#btnSaveOrUpdate").click(function () {
+
+        $("#customerTable>tr").off("click");
+
+        let customerID = $("#custID").val();
+        let customerName = $("#custName").val();
+        let customerNIC = $("#nic").val();
+        let customerAddress = $("#address").val();
+        let customerTP = $("#contact").val();
+
+        let row = `<tr><td>${customerID}</td><td>${customerName}</td><td>${customerNIC}</td><td>${customerAddress}</td><td>${customerTP}</td></tr>`;
+
+        $("#customerTable").append(row);
+
+        $("#customerTable>tr").click(function () {
+
+            let cusID = $(this).children(":eq(0)").text();
+            let cusName = $(this).children(":eq(1)").text();
+            let cusNIC = $(this).children(":eq(2)").text();
+            let cusAddress = $(this).children(":eq(3)").text();
+            let cusTP = $(this).children(":eq(4)").text();
+
+            console.log(cusID, cusName, cusNIC, cusAddress, cusTP);
+
+            $("#custID").val(cusID);
+            $("#custName").val(cusName);
+            $("#nic").val(cusNIC);
+            $("#custAddress").val(cusAddress);
+            $("#contact").val(cusTP);
+
+        });
+    });
 </script>
 
-<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
