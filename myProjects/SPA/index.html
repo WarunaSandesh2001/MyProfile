@@ -130,36 +130,36 @@
 
         <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" tabindex="-1">
             <div class="modal-dialog">
-                <div class="modal-content" style="background-color: #b8dffa">
+                <div class="modal-content" style="background-color: #162238">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel" style="color: #1d33ab">New Customer</h5>
+                        <h5 class="modal-title" id="exampleModalLabel" style="color: white; font-weight: bolder">New Customer</h5>
                         <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
                     </div>
                     <div class="modal-body">
                         <form>
                             <div class="mb-3">
-                                <label class="col-form-label" for="custID">Customer ID:</label>
+                                <label class="col-form-label" for="custID" style="color: white;">Customer ID:</label>
                                 <input class="form-control" id="custID" type="text">
                                 <p><small class="text-danger pl-1" id="lblcusid"></small></p>
                             </div>
                             <div class="mb-3">
-                                <label class="col-form-label" for="custName">Customer Name:</label>
+                                <label class="col-form-label" for="custName" style="color: white;">Customer Name:</label>
                                 <input class="form-control" id="custName" type="text">
                                 <p><small class="text-danger pl-1" id="lblcusname"></small></p>
                             </div>
                             <div class="mb-3">
-                                <label class="col-form-label" for="nic">Customer NIC:</label>
+                                <label class="col-form-label" for="nic" style="color: white;">Customer NIC:</label>
                                 <input class="form-control" id="nic" type="text">
                                 <p><small class="text-danger pl-1" id="lblcusNIC"></small></p>
                             </div>
                             <div class="mb-3">
-                                <label class="col-form-label" for="address">Customer Address:</label>
+                                <label class="col-form-label" for="address" style="color: white;">Customer Address:</label>
                                 <input class="form-control" id="address" type="text">
                                 <p><small class="text-danger pl-1" id="lblcusAddress"></small></p>
                             </div>
 
                             <div class="mb-3">
-                                <label class="col-form-label" for="contact">Customer Contact:</label>
+                                <label class="col-form-label" for="contact" style="color: white;">Customer Contact:</label>
                                 <input class="form-control" id="contact" type="text">
                                 <p><small class="text-danger pl-1" id="lblcusContact"></small></p>
                             </div>
@@ -329,27 +329,27 @@
 
         <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal1" tabindex="-1">
             <div class="modal-dialog">
-                <div class="modal-content" style="background-color: #b8dffa">
+                <div class="modal-content" style="background-color: #162238">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel2" style="color: #1d33ab">New Item</h5>
+                        <h5 class="modal-title" id="exampleModalLabel2" style="color: white; font-weight: bolder">New Item</h5>
                         <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
                     </div>
                     <div class="modal-body">
                         <form>
                             <div class="mb-3">
-                                <label class="col-form-label" for="iCode">Item Code:</label>
+                                <label class="col-form-label" for="iCode" style="color: white">Item Code:</label>
                                 <input class="form-control" id="iCode" type="text">
                             </div>
                             <div class="mb-3">
-                                <label class="col-form-label" for="itemName">Item Name:</label>
+                                <label class="col-form-label" for="itemName" style="color: white">Item Name:</label>
                                 <input class="form-control" id="itemName" type="text">
                             </div>
                             <div class="mb-3">
-                                <label class="col-form-label" for="Iprice">Item Price:</label>
+                                <label class="col-form-label" for="Iprice" style="color: white">Item Price:</label>
                                 <input class="form-control" id="Iprice" type="text">
                             </div>
                             <div class="mb-3">
-                                <label class="col-form-label" for="Iqty">Item Quantity:</label>
+                                <label class="col-form-label" for="Iqty" style="color: white">Item Quantity:</label>
                                 <input class="form-control" id="Iqty" type="text">
                             </div>
                         </form>
@@ -522,7 +522,7 @@
 
 <script src="assets/jQuery/jquery-3.6.0.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+<script src="db/db.js"></script>
 
 <script>
 
@@ -559,7 +559,7 @@
         document.getElementById("orders").style.display = "block";
     });
 
-    // Customer form Validation
+    // Customer form Validation and save
     {
         const cusIDRegEx = /^(C00-)[0-9]{1,3}$/;
         const cusNameRegEx = /^[A-z ]{5,20}$/;
@@ -647,9 +647,9 @@
                     $("#custName").css('border', '2px solid green');
                     $("#lblcusname").text("");
                     var cusNIC = $("#nic").val();
-                    console.log(cusNIC);//=============================
+                    //console.log(cusNIC);//=============================
                     if (cusNICRegEx.test(cusNIC)) {
-                        console.log("What");
+                        //console.log("What");
                         $("#nic").css('border', '2px solid green');
                         $("#lblcusNIC").text("");
                         var cusAddress = $("#address").val();
@@ -754,7 +754,17 @@
 
             $("#customerTable").append(row);
 
-            $("#customerTable>tr").click(function () {
+            var customerObject = {
+                id: customerID,
+                name: customerName,
+                nic: customerNIC,
+                address: customerAddress,
+                contact: customerTP
+            };
+
+            customerDB.push(customerObject);
+
+            /*$("#customerTable>tr").click(function () {
 
                 let cusID = $(this).children(":eq(0)").text();
                 let cusName = $(this).children(":eq(1)").text();
@@ -762,7 +772,7 @@
                 let cusAddress = $(this).children(":eq(3)").text();
                 let cusTP = $(this).children(":eq(4)").text();
 
-                console.log(cusID, cusName, cusNIC, cusAddress, cusTP);
+                //console.log(cusID, cusName, cusNIC, cusAddress, cusTP);
 
                 $("#custID").val(cusID);
                 $("#custName").val(cusName);
@@ -770,11 +780,11 @@
                 $("#custAddress").val(cusAddress);
                 $("#contact").val(cusTP);
 
-            });
+            });*/
         }
     }
 
-    // Item Form Validation
+    // Item Form Validation and save
     {
         var itemCodeRegEx = /^(I00-)[0-9]{3}$/;
         var itemNameRegEx = /^[A-z ]{4,}$/;
@@ -864,7 +874,7 @@
                         $("#Iqty").focus();
                         var iQuentity = $("#Iqty").val();
                         if (itemQtyOnHandRegEx.test(iQuentity)) {
-                            let res = confirm("Do you really need to add this Customer..?");
+                            let res = confirm("Do you really need to add this Item..?");
                             if (res) {
                                 saveItem();
                                 clearAllItem();
@@ -911,6 +921,15 @@
 
             $("#itemTable").append(row);
 
+            var itemrObject = {
+                iCode: itemCode,
+                name: itemName,
+                IPri: price,
+                IQty: itemQTY
+            };
+
+            itemDB.push(itemrObject);
+
             $("#itemTable>tr").click(function () {
 
                 let itemCode = $(this).children(":eq(0)").text();
@@ -918,7 +937,7 @@
                 let price = $(this).children(":eq(2)").text();
                 let itemQTY = $(this).children(":eq(3)").text();
 
-                console.log(itemCode, itemName, price, itemQTY);
+                //console.log(itemCode, itemName, price, itemQTY);
 
                 $("#iCode").val(itemCode);
                 $("#itemName").val(itemName);
