@@ -465,26 +465,27 @@
         <div class="shadow-lg col-3 mt-2"
              style="width: 500px; height: 400px; background-color:#020101;  border: 3px solid #000000">
             <div class="mt-3 m-4">
-                <h5 style="color: #fcfcfc; font-family: 'Adobe Fangsong Std R'; font-size: 35px">Total Price :
-                    Rs.50,000.00 </h5>
-                <h5 style="color: #ce0303; font-family: 'Times New Roman'; font-size: 35px">Sub Total :
-                    Rs.48,570.00 </h5>
+                <h5 id="totalPrice" style="color: #fcfcfc; font-family: 'Adobe Fangsong Std R'; font-size: 35px">Total
+                    Price :
+                    Rs.0.00 </h5>
+                <h5 id="subTotal" style="color: #ce0303; font-family: 'Times New Roman'; font-size: 35px">Sub Total- :
+                    Rs.0.00 </h5>
             </div>
 
             <div class="row">
                 <div class="col-md-6 mt-2">
-                    <label class="form-label" for="inputCash" style="color: white">Cash</label>
-                    <input class="form-control" id="inputCash" type="text">
-                </div>
-
-                <div class="col-md-6 mt-2">
-                    <label class="form-label" for="inputDiscount" style="color: white">Discount</label>
+                    <label class="form-label" for="inputDiscount" style="color: white">Discount (Rs)</label>
                     <input class="form-control" id="inputDiscount" type="text">
                 </div>
 
+                <div class="col-md-6 mt-2">
+                    <label class="form-label" for="inputCash" style="color: white">Cash (Rs)</label>
+                    <input class="form-control" id="inputCash" type="text">
+                </div>
+
                 <div class="col-md-12 mt-2">
-                    <label class="form-label" for="inputBalance" style="color: white">Balance</label>
-                    <input class="form-control" id="inputBalance" type="text">
+                    <label class="form-label" for="inputBalance" style="color: white" >Balance (Rs)</label>
+                    <input class="form-control" id="inputBalance" type="text" >
                 </div>
 
                 <div class="d-flex flex-row justify-content-center mt-4">
@@ -525,6 +526,8 @@
 <script src="db/db.js"></script>
 <script src="model/CustomerDTO.js"></script>
 <script src="model/ItemDTO.js"></script>
+<script src="model/OrderDetailDTO.js"></script>
+<script src="model/OrderDTO.js"></script>
 
 <script>
 
@@ -755,7 +758,7 @@
             let customerAddress = $("#address").val();
             let customerTP = $("#contact").val();
 
-            let customerDTO = new CustomerDTO(customerID,customerName,customerNIC,customerAddress,customerTP);
+            let customerDTO = new CustomerDTO(customerID, customerName, customerNIC, customerAddress, customerTP);
 
             //let row = `<tr><td>${customerID}</td><td>${customerName}</td><td>${customerNIC}</td><td>${customerAddress}</td><td>${customerTP}</td></tr>`;
 
@@ -790,6 +793,7 @@
             $("#customerTable").append(row);
         }
     }
+
     // Item Form Validation and save
     {
         var itemCodeRegEx = /^(I00-)[0-9]{3}$/;
@@ -931,7 +935,7 @@
             let price = $("#Iprice").val();
             let itemQTY = $("#Iqty").val();
 
-            let itemDTO = new ItemDTO(itemCode,itemName,price,itemQTY);
+            let itemDTO = new ItemDTO(itemCode, itemName, price, itemQTY);
             itemDB.push(itemDTO);
             loadAllItems();
 
@@ -955,42 +959,46 @@
 
     // Order Form Validation and save
 
-    $("#inputId").attr("disabled",true);
-    $("#inputName").attr("disabled",true);
-    $("#inputContact").attr("disabled",true);
-    $("#inputAddress").attr("disabled",true);
+    $("#inputId").attr("disabled", true);
+    $("#inputName").attr("disabled", true);
+    $("#inputContact").attr("disabled", true);
+    $("#inputAddress").attr("disabled", true);
 
-    $("#inputItemCode").attr("disabled",true);
-    $("#inputIName").attr("disabled",true);
-    $("#inputQTY").attr("disabled",true);
-    $("#inputPrice").attr("disabled",true);
+    $("#inputItemCode").attr("disabled", true);
+    $("#inputIName").attr("disabled", true);
+    $("#inputQTY").attr("disabled", true);
+    $("#inputPrice").attr("disabled", true);
 
+    $("#inputBalance").attr("disabled", true);
+
+    var ifExistsCustomer = false;
+    var ifExistsItem = false;
+    let selectedItem;
+    let total=0.00;
     function setCustomerIdsToComboBox() {
         $("#inputState").empty();
         $("#inputState").append(new Option("-Select Customer-", ""));
         for (let i = 0; i < customerDB.length; i++) {
-            $("#inputState").append(new Option(customerDB[i].getID(),i));
+            $("#inputState").append(new Option(customerDB[i].getID(), i));
         }
     }
-
-    var ifExistsCustomer = false;
 
     $("#inputState").change(function () {
         var id = $("#inputState").find('option:selected').text();
         let searchCustomer1 = searchCustomer(id);
-        if (searchCustomer1){
+        if (searchCustomer1) {
             ifExistsCustomer = true;
             $("#inputId").val(searchCustomer1.getID());
             $("#inputName").val(searchCustomer1.getName());
             $("#inputContact").val(searchCustomer1.getContact());
             $("#inputAddress").val(searchCustomer1.getAddress());
         }
-       if (ifExistsCustomer == false) {
-           $("#inputId").val("");
-           $("#inputName").val("");
-           $("#inputContact").val("");
-           $("#inputAddress").val("");
-       }
+        if (ifExistsCustomer == false) {
+            $("#inputId").val("");
+            $("#inputName").val("");
+            $("#inputContact").val("");
+            $("#inputAddress").val("");
+        }
 
     });
 
@@ -1001,25 +1009,23 @@
                 return customerDB[i];
             }
         }
-        ifExistsCustomer=false;
+        ifExistsCustomer = false;
     }
 
     function setItemIdsToComboBox() {
         $("#selectItem").empty();
         $("#selectItem").append(new Option("-Select Item-", ""));
         for (let i = 0; i < itemDB.length; i++) {
-            $("#selectItem").append(new Option(itemDB[i].getItemCode(),i));
+            $("#selectItem").append(new Option(itemDB[i].getItemCode(), i));
         }
     }
 
-    var ifExistsItem = false;
-    let selectedItem;
     $("#selectItem").change(function () {
         var id = $("#selectItem").find('option:selected').text();
         let searchItem1 = searchItem(id);
-        if (searchItem1){
+        if (searchItem1) {
             ifExistsItem = true;
-            selectedItem=searchItem1;
+            selectedItem = searchItem1;
             $("#inputItemCode").val(searchItem1.getItemCode());
             $("#inputIName").val(searchItem1.getItemName());
             $("#inputQTY").val(searchItem1.getItemQTY());
@@ -1041,26 +1047,35 @@
                 return itemDB[i];
             }
         }
-        ifExistsItem=false;
+        ifExistsItem = false;
     }
 
     function loadAllOrders() {
         $("#orderTable").empty();
-        for (var i of OrderDB) {
-            let row = `<tr><td>${i.getItemCode()}</td><td>${i.getItemName()}</td><td>${i.getPrice()}</td><td>${i.getItemQTY()}</tr>`;
-            $("#itemTable").append(row);
+        for (var i of OrderDetailsDB) {
+            let row = `<tr><td>${i.getItemCodeOfDetails()}</td><td>${i.getItemNameOfDetails()}</td><td>${i.getOrderQTY()}</td><td>${i.getPricePerUnit()}</td><td>${i.getTPrice()}</tr>`;
+            $("#orderTable").append(row);
         }
     }
 
     $("#btnAddToCart").click(function () {
         let OID = $("#inputOrderID").val();
-        let dateObject = $("#inputDate").val();
-        let orderDTO = new OrderDTO(OID,dateObject,"Rs.7500.00","ABCD");
+        let orderQTY = $("#inputOrderQTY").val();
+        total = total + orderQTY * selectedItem.getPrice();
+
+        let orderDetailObject = new OrderDetailDTO(OID, selectedItem.getItemCode(), selectedItem.getItemName(), orderQTY, selectedItem.getPrice(), total);
+        OrderDetailsDB.push(orderDetailObject);
         loadAllOrders();
+
+        $("#totalPrice").text("Total Price : Rs."+total);
+        $("#subTotal").text("sub Price- : Rs."+total);
     });
 
+    $("#inputDiscount").on('keyup', function (eventOb) {
+        if (eventOb.key == "Enter") {
 
-
+        }
+    });
 
 </script>
 

@@ -1,9 +1,14 @@
-function OrderDetailDTO(itemCode,itemName,orderQTY,tPrice){
+function OrderDetailDTO(orderCode,itemCode,itemName,orderQTY,pPerUnit,tPrice){
+    var __orderCode=orderCode;
     var __itemCode=itemCode;
     var __ItemName=itemName;
     var __orderQTY=orderQTY;
+    var __pPerUnit=pPerUnit;
     var __tPrice=tPrice;
 
+    this.getOCode = function () {
+        return __orderCode;
+    }
     this.getItemCodeOfDetails = function () {
         return __itemCode;
     }
@@ -13,11 +18,16 @@ function OrderDetailDTO(itemCode,itemName,orderQTY,tPrice){
     this.getOrderQTY = function () {
         return __orderQTY;
     }
+    this.getPricePerUnit = function () {
+        return __pPerUnit;
+    }
     this.getTPrice = function () {
         return __tPrice;
     }
 
-
+    this.setOCode = function (orderCode) {
+        __orderCode=orderCode;
+    }
     this.setItemCodeOfDetails = function (itemCode) {
         __itemCode=itemCode;
     }
@@ -26,6 +36,9 @@ function OrderDetailDTO(itemCode,itemName,orderQTY,tPrice){
     }
     this.setOrderQTY = function (orderQTY) {
         __orderQTY=orderQTY;
+    }
+    this.setPricePerUnit = function (pPerUnit) {
+        __pPerUnit=pPerUnit;
     }
     this.setTPrice = function (tPrice) {
         __tPrice=tPrice;
