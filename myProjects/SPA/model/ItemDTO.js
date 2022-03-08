@@ -5,16 +5,16 @@ function ItemDTO(itemCode,itemName,price,itemQTY){
     var __itemQTY=itemQTY;
 
     this.getItemCode = function () {
-        return itemCode;
+        return __itemCode;
     }
     this.getItemName = function () {
-        return itemName;
+        return __itemName;
     }
     this.getPrice = function () {
-        return price;
+        return __price;
     }
     this.getItemQTY = function () {
-        return itemQTY;
+        return __itemQTY;
     }
 
 
