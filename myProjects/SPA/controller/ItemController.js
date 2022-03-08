@@ -199,10 +199,10 @@
     });
 
     $("#updateItem").click(function () {
-        $("#itemCode").val(response.getItemCode());
+        $("#iCode").val(response.getItemCode());
         $("#itemName").val(response.getItemName());
-        $("#price").val(response.getPrice());
-        $("#qty").val(response.getItemQTY());
+        $("#Iprice").val(response.getPrice());
+        $("#Iqty").val(response.getItemQTY());
 
         $("#renewItem").attr("disabled", false);
         $("#itemCode").attr("disabled", true);
@@ -212,12 +212,12 @@
     $("#renewItem").click(function () {
 
         //if($("#custName").val() == "" && $("#nic").val() == "" && $("#address").val() == "" && $("#contact").val() == ""){
-        var id =$("#itemCode").val();
+        var id =$("#iCode").val();
         for (var i=0; i<itemDB.length; i++){
             if(itemDB[i].getItemCode() == id){
                 itemDB[i].setItemName($("#itemName").val());
-                itemDB[i].setPrice($("#price").val());
-                itemDB[i].setItemQTY($("#qty").val());
+                itemDB[i].setPrice($("#Iprice").val());
+                itemDB[i].setItemQTY($("#Iqty").val());
                /* customerDB[i].setContact($("#contact").val());*/
                // console.log(customerDB[i].getAddress());
 
@@ -230,10 +230,10 @@
                     timer : 2000
                 });
 
-                $("#itemCode").val("");
+                $("#iCode").val("");
                 $("#itemName").val("");
-                $("#price").val("");
-                $("#qty").val("");
+                $("#Iprice").val("");
+                $("#Iqty").val("");
 
                 $("#renewItem").attr("disabled", true);
             }
@@ -246,6 +246,18 @@
                timer : 2000
            });
        }*/
+    });
 
+    $("#deleteItem").click(function () {
+        itemDB.splice(response);
+
+        swal({
+            title:"Confirmation..!",
+            text: "Item deleted Successfully",
+            icon : "confirm",
+            timer : 2000
+        });
+
+        loadAllItems();
     });
 }
