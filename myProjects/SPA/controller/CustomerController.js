@@ -8,6 +8,7 @@
     $("#updateCustomer").attr("disabled", true);
     $("#renew").attr("disabled", false);
     $("#custID").attr("disabled", false);
+    $("#deleteCustomer").attr("disabled", true);
 
     $('#custID,#custName,#nic,#address,#contact').on('keydown', function (eventOb) {
         if (eventOb.key == "Tab") {
@@ -227,6 +228,7 @@
             $("#customerTable").append(row);
             $("#txtSearchCusID").val("");
             $("#updateCustomer").attr("disabled", false);
+            $("#deleteCustomer").attr("disabled", false);
         }else{
             /* alert("No Such a Customer");*/
             loadAllCustomers();
@@ -264,6 +266,7 @@
                 $("#customerTable").append(row);
                 $("#txtSearchCusID").val("");
                 $("#updateCustomer").attr("disabled", false);
+                $("#deleteCustomer").attr("disabled", false);
             }else{
                 loadAllCustomers();
                 swal({
@@ -326,6 +329,20 @@
                 timer : 2000
             });
         }*/
+
+    });
+
+    $("#deleteCustomer").click(function () {
+        customerDB.splice(response);
+
+        swal({
+            title:"Confirmation..!",
+            text: "Customer deleted Successfully",
+            icon : "confirm",
+            timer : 2000
+        });
+
+        loadAllCustomers();
 
     });
 
