@@ -6,19 +6,19 @@ function CustomerDTO(id,name,nic,address,contact){
     var __contact=contact;
 
     this.getID = function () {
-        return id;
+        return __id;
     }
     this.getName = function () {
-        return name;
+        return __name;
     }
     this.getNIC = function () {
-        return nic;
+        return __nic;
     }
     this.getAddress = function () {
-        return address;
+        return __address;
     }
     this.getContact = function () {
-        return contact;
+        return __contact;
     }
 
     this.setID = function (id) {

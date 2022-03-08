@@ -100,35 +100,38 @@
         <div class="align bg-light mt-1">
             <h4 class="mt-3" style="background-color: #4ed429">Search Customer</h4>
 
-            <form class="row gy-2 gx-3 align-items-center">
+            <!--<form class="row gy-2 gx-3 align-items-center">-->
                 <div class="col-auto">
-                    <label class="visually-hidden" for="autoSizingInput">Name</label>
-                    <input class="form-control" id="autoSizingInput" placeholder="search" style="width: 500px"
+                    <!--<label class="visually-hidden" for="autoSizingInput">Name</label>-->
+                    <input class="form-control" id="txtSearchCusID" placeholder="search"
+                           type="text" style="width: 500px">
+                    <!--<input class="form-control" id="txtSearchCusID1" placeholder="search"
                            type="text">
+                    <input type="text" placeholder="search" style="width: 500px">-->
                 </div>
-                <div class="col-auto">
+                <!--<div class="col-auto">
                     <label class="visually-hidden" for="autoSizingSelect">Preference</label>
                     <select class="form-select" id="autoSizingSelect">
                         <option value="1">Name</option>
                         <option value="2">NIC</option>
                         <option value="3">Address</option>
                     </select>
-                </div>
+                </div>-->
                 <div class="col-auto">
-                    <button class="btn btn-primary" type="submit">Search</button>
+                    <button class="btn btn-primary" type="button" id="btnSearch">Search</button>
                 </div>
                 <div>
-                    <button class="btn btn-primary mt-1" style="background: #ee0216" type="reset">Delete</button>
-                    <button class="btn btn-primary mt-1" style="background: #1d33ab" type="reset">Details</button>
-                    <button class="btn btn-primary mt-1" style="background: #565e64" type="button">Clear</button>
+                    <button class="btn btn-primary mt-1" id="updateCustomer" style="background: #0138d9" type="reset" data-bs-target="#exampleModal" data-bs-toggle="modal"
+                            data-bs-whatever="@getbootstrap">Update</button>
+                    <button class="btn btn-primary mt-1" id="deleteCustomer"  style="background: #ee0216" type="reset">Delete</button>
                 </div>
-            </form>
+           <!-- </form>-->
         </div>
     </section>
 
     <section>
 
-        <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" tabindex="-1">
+        <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" tabindex="-1" >
             <div class="modal-dialog">
                 <div class="modal-content" style="background-color: #162238">
                     <div class="modal-header">
@@ -173,7 +176,7 @@
                         <button class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: #565e64"
                                 type="button">Close
                         </button>
-                        <button class="btn btn-primary" style="background-color: darkgreen" type="button">Renew</button>
+                        <button class="btn btn-primary" style="background-color: darkgreen" type="button" id="renew">Renew</button>
                         <button class="btn btn-primary" id="btnSaveOrUpdate" style="background-color: darkblue"
                                 type="button">Save Customer
                         </button>
@@ -184,41 +187,7 @@
     </section>
 
     <section class="shadow-lg">
-        <!--<table class="table table-dark table-striped table-hover mt-5">
-            <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">NIC</th>
-                <th scope="col">Address</th>
-                <th scope="col">Contact</th>
-            </tr>
-            </thead>
-            <tbody id="customerTable">
-            <tr>
-                <th scope="row">C001</th>
-                <td>Sameera</td>
-                <td>945862075V</td>
-                <td>Kadawatha</td>
-                <td>0715486957</td>
-            </tr>
-            <tr>
-                <th scope="row">C002</th>
-                <td>Kamal</td>
-                <td>954578215V</td>
-                <td>Matara</td>
-                <td>0764581257</td>
-            </tr>
-            <tr>
-                <th scope="row">C003</th>
-                <td>Saman</td>
-                <td>@200204500854</td>
-                <td>Galle</td>
-                <td>0754562131</td>
-            </tr>
-            </tbody>
-        </table>-->
-        <div class="col">
+        <div class="col" >
             <table class="table table-dark table-striped table-hover mt-5">
                 <thead class="bg-danger text-white">
                 <tr>
@@ -489,7 +458,7 @@
                 </div>
 
                 <div class="d-flex flex-row justify-content-center mt-4">
-                    <button class="btn btn-primary mt-1"
+                    <button class="btn btn-primary mt-1" id="purchase"
                             style="font-weight: bolder; background-color: #031dc9"
                             type="reset">Purchase
                     </button>
@@ -528,6 +497,8 @@
 <script src="model/ItemDTO.js"></script>
 <script src="model/OrderDetailDTO.js"></script>
 <script src="model/OrderDTO.js"></script>
+<script src="assets/sweet%20alert/sweetalert.min.js"></script>
+<script src="controller/CustomerController.js"></script>
 
 <script>
 
@@ -568,231 +539,7 @@
     });
 
     // Customer form Validation and save
-    {
-        const cusIDRegEx = /^(C00-)[0-9]{1,3}$/;
-        const cusNameRegEx = /^[A-z ]{5,20}$/;
-        const cusNICRegEx = /^[0-9]{12}$/;
-        const cusAddressRegEx = /^[0-9/A-z. ,]{7,}$/;
-        const cusContactRegEx = /^(07)[0-9][0-9]{7}$/;
 
-        $('#custID,#custName,#nic,#address,#contact').on('keydown', function (eventOb) {
-            if (eventOb.key == "Tab") {
-                eventOb.preventDefault(); // stop execution of the button
-            }
-        });
-
-        $('#custID,#custName,#nic,#address,#contact').on('blur', function () {
-            formValid();
-        });
-
-
-        $("#custID").on('keyup', function (eventOb) {
-
-            setButton();
-            if (eventOb.key == "Enter") {
-                checkIfValid();
-            }
-
-            if (eventOb.key == "Control") {
-                var typedCustomerID = $("#custID").val();
-                var srcCustomer = searchCustomerFromID(typedCustomerID);
-                $("#custID").val(srcCustomer.getCustomerID());
-                $("#custName").val(srcCustomer.getCustomerName());
-                $("#nic").val(srcCustomer.getCustomerAddress());
-                $("#address").val(srcCustomer.getCustomerSalary());
-                $("#contact").val(srcCustomer.getCustomerSalary());
-            }
-
-        });
-
-        $("#custName").on('keyup', function (eventOb) {
-            setButton();
-            if (eventOb.key == "Enter") {
-                checkIfValid();
-            }
-        });
-
-        $("#nic").on('keyup', function (eventOb) {
-            setButton();
-            if (eventOb.key == "Enter") {
-                checkIfValid();
-            }
-        });
-
-        $("#address").on('keyup', function (eventOb) {
-            setButton();
-            if (eventOb.key == "Enter") {
-                checkIfValid();
-            }
-        });
-
-        $("#contact").on('keyup', function (eventOb) {
-            setButton();
-            if (eventOb.key == "Enter") {
-                checkIfValid();
-            }
-        });
-
-
-        $("#btnSaveOrUpdate").attr('disabled', true);
-
-        function clearAll() {
-            $('#custID,#custName,#nic,#address,#contact').val("");
-            $('#custID,#custName,#nic,#address,#contact').css('border', '2px solid #ced4da');
-            $('#custID').focus();
-            $("#btnSaveOrUpdate").attr('disabled', true);
-            //loadAllCustomers();
-            $("#lblcusid,#lblcusname,#lblcusNIC,#lblcusAddress,#lblcusContact").text("");
-        }
-
-        function formValid() {
-            var cusID = $("#custID").val();
-            $("#custID").css('border', '2px solid green');
-            $("#lblcusid").text("");
-            if (cusIDRegEx.test(cusID)) {
-                var cusName = $("#custName").val();
-                if (cusNameRegEx.test(cusName)) {
-                    $("#custName").css('border', '2px solid green');
-                    $("#lblcusname").text("");
-                    var cusNIC = $("#nic").val();
-                    //console.log(cusNIC);//=============================
-                    if (cusNICRegEx.test(cusNIC)) {
-                        //console.log("What");
-                        $("#nic").css('border', '2px solid green');
-                        $("#lblcusNIC").text("");
-                        var cusAddress = $("#address").val();
-                        if (cusAddressRegEx.test(cusAddress)) {
-                            $("#address").css('border', '2px solid green');
-                            $("#lblcusAddress").text("");
-                            var cusContact = $("#address").val();
-                            // return true;
-                            if (cusContactRegEx.test(cusContact)) {
-                                $("#contact").css('border', '2px solid green');
-                                $("#lblcusContact").text("");
-                                return true;
-                            } else {
-                                $("#contact").css('border', '2px solid red');
-                                $("#lblcusContact").text("Cus Salary is a required field : Pattern 100.00 or 100");
-                                return false;
-                            }
-                        } else {
-                            $("#address").css('border', '2px solid red');
-                            $("#lblcusAddress").text("Cus Salary is a required field : Pattern 100.00 or 100");
-                            return false;
-                        }
-                    } else {
-                        $("#nic").css('border', '2px solid red');
-                        $("#lblcusNIC").text("Cus Name is a required field : Mimum 7");
-                        return false;
-                    }
-                } else {
-                    $("#custName").css('border', '2px solid red');
-                    $("#lblcusname").text("Cus Name is a required field : Mimimum 5, Max 20, Spaces Allowed");
-                    return false;
-                }
-            } else {
-                $("#custID").css('border', '2px solid red');
-                $("#lblcusid").text("Cus ID is a required field : Pattern C00-000");
-                return false;
-            }
-        }
-
-        function checkIfValid() {
-            var cusID = $("#custID").val();
-            if (cusIDRegEx.test(cusID)) {
-                $("#custName").focus();
-                var cusName = $("#custName").val();
-                if (cusNameRegEx.test(cusName)) {
-                    $("#nic").focus();
-                    var cusNIC = $("#nic").val();
-                    if (cusNICRegEx.test(cusNIC)) {
-                        $("#address").focus();
-                        var cusAddress = $("#address").val();
-                        if (cusAddressRegEx.test(cusAddress)) {
-                            $("#contact").focus();
-                            var cusContact = $("#contact").val();
-                            if (cusContactRegEx.test(cusContact)) {
-                                let res = confirm("Do you really need to add this Customer..?");
-                                if (res) {
-                                    saveCustomer();
-                                    clearAll();
-                                }
-                            } else {
-                                $("#contact").focus();
-                            }
-                        } else {
-                            $("#address").focus();
-                        }
-                    } else {
-                        $("#nic").focus();
-                    }
-                } else {
-                    $("#custName").focus();
-                }
-            } else {
-                $("#custID").focus();
-            }
-        }
-
-        function setButton() {
-            let b = formValid();
-            if (b) {
-                $("#btnSaveOrUpdate").attr('disabled', false);
-            } else {
-                $("#btnSaveOrUpdate").attr('disabled', true);
-            }
-        }
-
-        $('#btnSaveOrUpdate').click(function () {
-            checkIfValid();
-        });
-
-        /*Save Customer*/
-        function saveCustomer() {
-
-            $("#customerTable>tr").off("click");
-
-            let customerID = $("#custID").val();
-            let customerName = $("#custName").val();
-            let customerNIC = $("#nic").val();
-            let customerAddress = $("#address").val();
-            let customerTP = $("#contact").val();
-
-            let customerDTO = new CustomerDTO(customerID, customerName, customerNIC, customerAddress, customerTP);
-
-            //let row = `<tr><td>${customerID}</td><td>${customerName}</td><td>${customerNIC}</td><td>${customerAddress}</td><td>${customerTP}</td></tr>`;
-
-            //$("#customerTable").append(row);
-
-            customerDB.push(customerDTO);
-            loadAllCustomers();
-            /*$("#customerTable>tr").click(function () {
-
-                let cusID = $(this).children(":eq(0)").text();
-                let cusName = $(this).children(":eq(1)").text();
-                let cusNIC = $(this).children(":eq(2)").text();
-                let cusAddress = $(this).children(":eq(3)").text();
-                let cusTP = $(this).children(":eq(4)").text();
-
-                //console.log(cusID, cusName, cusNIC, cusAddress, cusTP);
-
-                $("#custID").val(cusID);
-                $("#custName").val(cusName);
-                $("#nic").val(cusNIC);
-                $("#custAddress").val(cusAddress);
-                $("#contact").val(cusTP);
-
-            });*/
-        }
-    }
-
-    function loadAllCustomers() {
-        $("#customerTable").empty();
-        for (var i of customerDB) {
-            let row = `<tr><td>${i.getID()}</td><td>${i.getName()}</td><td>${i.getNIC()}</td><td>${i.getAddress()}</td><td>${i.getContact()}</td></tr>`;
-            $("#customerTable").append(row);
-        }
-    }
 
     // Item Form Validation and save
     {
@@ -958,125 +705,155 @@
     }
 
     // Order Form Validation and save
+    {
+        $("#inputId").attr("disabled", true);
+        $("#inputName").attr("disabled", true);
+        $("#inputContact").attr("disabled", true);
+        $("#inputAddress").attr("disabled", true);
 
-    $("#inputId").attr("disabled", true);
-    $("#inputName").attr("disabled", true);
-    $("#inputContact").attr("disabled", true);
-    $("#inputAddress").attr("disabled", true);
+        $("#inputItemCode").attr("disabled", true);
+        $("#inputIName").attr("disabled", true);
+        $("#inputQTY").attr("disabled", true);
+        $("#inputPrice").attr("disabled", true);
 
-    $("#inputItemCode").attr("disabled", true);
-    $("#inputIName").attr("disabled", true);
-    $("#inputQTY").attr("disabled", true);
-    $("#inputPrice").attr("disabled", true);
+        $("#inputBalance").attr("disabled", true);
+        $("#inputCash").attr("disabled", true);
+        $("#purchase").attr("disabled", true);
 
-    $("#inputBalance").attr("disabled", true);
+        var ifExistsCustomer = false;
+        var ifExistsItem = false;
+        let selectedItem;
+        let total = 0.00;
+        let subTotal = 0.00;
+        let orderDetailObject;
 
-    var ifExistsCustomer = false;
-    var ifExistsItem = false;
-    let selectedItem;
-    let total=0.00;
-    function setCustomerIdsToComboBox() {
-        $("#inputState").empty();
-        $("#inputState").append(new Option("-Select Customer-", ""));
-        for (let i = 0; i < customerDB.length; i++) {
-            $("#inputState").append(new Option(customerDB[i].getID(), i));
-        }
-    }
-
-    $("#inputState").change(function () {
-        var id = $("#inputState").find('option:selected').text();
-        let searchCustomer1 = searchCustomer(id);
-        if (searchCustomer1) {
-            ifExistsCustomer = true;
-            $("#inputId").val(searchCustomer1.getID());
-            $("#inputName").val(searchCustomer1.getName());
-            $("#inputContact").val(searchCustomer1.getContact());
-            $("#inputAddress").val(searchCustomer1.getAddress());
-        }
-        if (ifExistsCustomer == false) {
-            $("#inputId").val("");
-            $("#inputName").val("");
-            $("#inputContact").val("");
-            $("#inputAddress").val("");
-        }
-
-    });
-
-    function searchCustomer(id) {
-        for (let i = 0; i < customerDB.length; i++) {
-            if (customerDB[i].getID() == id) {
-                ifExistsCustomer = true;
-                return customerDB[i];
+        function setCustomerIdsToComboBox() {
+            $("#inputState").empty();
+            $("#inputState").append(new Option("-Select Customer-", ""));
+            for (let i = 0; i < customerDB.length; i++) {
+                $("#inputState").append(new Option(customerDB[i].getID(), i));
             }
         }
-        ifExistsCustomer = false;
-    }
 
-    function setItemIdsToComboBox() {
-        $("#selectItem").empty();
-        $("#selectItem").append(new Option("-Select Item-", ""));
-        for (let i = 0; i < itemDB.length; i++) {
-            $("#selectItem").append(new Option(itemDB[i].getItemCode(), i));
-        }
-    }
-
-    $("#selectItem").change(function () {
-        var id = $("#selectItem").find('option:selected').text();
-        let searchItem1 = searchItem(id);
-        if (searchItem1) {
-            ifExistsItem = true;
-            selectedItem = searchItem1;
-            $("#inputItemCode").val(searchItem1.getItemCode());
-            $("#inputIName").val(searchItem1.getItemName());
-            $("#inputQTY").val(searchItem1.getItemQTY());
-            $("#inputPrice").val(searchItem1.getPrice());
-        }
-        if (ifExistsItem == false) {
-            $("#inputItemCode").val("");
-            $("#inputIName").val("");
-            $("#inputQTY").val("");
-            $("#inputPrice").val("");
-        }
-
-    });
-
-    function searchItem(id) {
-        for (let i = 0; i < itemDB.length; i++) {
-            if (itemDB[i].getItemCode() == id) {
+        $("#inputState").change(function () {
+            var id = $("#inputState").find('option:selected').text();
+            let searchCustomer1 = searchCustomer(id);
+            if (searchCustomer1) {
                 ifExistsCustomer = true;
-                return itemDB[i];
+                $("#inputId").val(searchCustomer1.getID());
+                $("#inputName").val(searchCustomer1.getName());
+                $("#inputContact").val(searchCustomer1.getContact());
+                $("#inputAddress").val(searchCustomer1.getAddress());
+            }
+            if (ifExistsCustomer == false) {
+                $("#inputId").val("");
+                $("#inputName").val("");
+                $("#inputContact").val("");
+                $("#inputAddress").val("");
+            }
+
+        });
+
+        function searchCustomer(id) {
+            for (let i = 0; i < customerDB.length; i++) {
+                if (customerDB[i].getID() == id) {
+                    ifExistsCustomer = true;
+                    return customerDB[i];
+                }
+            }
+            ifExistsCustomer = false;
+        }
+
+        function setItemIdsToComboBox() {
+            $("#selectItem").empty();
+            $("#selectItem").append(new Option("-Select Item-", ""));
+            for (let i = 0; i < itemDB.length; i++) {
+                $("#selectItem").append(new Option(itemDB[i].getItemCode(), i));
             }
         }
-        ifExistsItem = false;
-    }
 
-    function loadAllOrders() {
-        $("#orderTable").empty();
-        for (var i of OrderDetailsDB) {
-            let row = `<tr><td>${i.getItemCodeOfDetails()}</td><td>${i.getItemNameOfDetails()}</td><td>${i.getOrderQTY()}</td><td>${i.getPricePerUnit()}</td><td>${i.getTPrice()}</tr>`;
-            $("#orderTable").append(row);
+        $("#selectItem").change(function () {
+            var id = $("#selectItem").find('option:selected').text();
+            let searchItem1 = searchItem(id);
+            if (searchItem1) {
+                ifExistsItem = true;
+                selectedItem = searchItem1;
+                $("#inputItemCode").val(searchItem1.getItemCode());
+                $("#inputIName").val(searchItem1.getItemName());
+                $("#inputQTY").val(searchItem1.getItemQTY());
+                $("#inputPrice").val(searchItem1.getPrice());
+            }
+            if (ifExistsItem == false) {
+                $("#inputItemCode").val("");
+                $("#inputIName").val("");
+                $("#inputQTY").val("");
+                $("#inputPrice").val("");
+            }
+
+        });
+
+        function searchItem(id) {
+            for (let i = 0; i < itemDB.length; i++) {
+                if (itemDB[i].getItemCode() == id) {
+                    ifExistsCustomer = true;
+                    return itemDB[i];
+                }
+            }
+            ifExistsItem = false;
         }
-    }
 
-    $("#btnAddToCart").click(function () {
-        let OID = $("#inputOrderID").val();
-        let orderQTY = $("#inputOrderQTY").val();
-        total = total + orderQTY * selectedItem.getPrice();
-
-        let orderDetailObject = new OrderDetailDTO(OID, selectedItem.getItemCode(), selectedItem.getItemName(), orderQTY, selectedItem.getPrice(), total);
-        OrderDetailsDB.push(orderDetailObject);
-        loadAllOrders();
-
-        $("#totalPrice").text("Total Price : Rs."+total);
-        $("#subTotal").text("sub Price- : Rs."+total);
-    });
-
-    $("#inputDiscount").on('keyup', function (eventOb) {
-        if (eventOb.key == "Enter") {
-
+        function loadAllOrders() {
+            $("#orderTable").empty();
+            for (var i of OrderDetailsDB) {
+                let row = `<tr><td>${i.getItemCodeOfDetails()}</td><td>${i.getItemNameOfDetails()}</td><td>${i.getOrderQTY()}</td><td>${i.getPricePerUnit()}</td><td>${i.getTPrice()}</tr>`;
+                $("#orderTable").append(row);
+            }
         }
-    });
 
+        $("#btnAddToCart").click(function () {
+            let OID = $("#inputOrderID").val();
+            let orderQTY = $("#inputOrderQTY").val();
+            total = total + orderQTY * selectedItem.getPrice();
+
+            orderDetailObject = new OrderDetailDTO(OID, selectedItem.getItemCode(), selectedItem.getItemName(), orderQTY, selectedItem.getPrice(), total);
+            tempArray.push(orderDetailObject);
+            loadAllOrders();
+
+            $("#totalPrice").text("Total Price : Rs." + total);
+            $("#subTotal").text("Sub Price- : Rs." + total);
+        });
+
+        $("#inputDiscount").on('keyup', function (eventOb) {
+            if (eventOb.key == "Enter") {
+                let discount = $("#inputDiscount").val();
+                subTotal = total - discount;
+                $("#subTotal").text("Sub Price- : Rs." + subTotal);
+                $("#inputCash").attr("disabled", false);
+            }
+        });
+        $("#inputCash").on('keyup', function (eventOb) {
+            if (eventOb.key == "Enter") {
+                let cash = $("#inputCash").val();
+                $("#inputBalance").val((cash - subTotal));
+                $("#purchase").attr("disabled", false);
+            }
+        });
+
+        $("#purchase").click(function () {
+            let res = confirm("Do you want to place the Order..?");
+            if (res) {
+                let OID = $("#inputOrderID").val();
+                let date = $("#inputDate").val();
+                let orderObject = new OrderDTO(OID, date, subTotal, orderDetailObject);
+                OrderDB.push(orderObject);
+                for (i = 0; i < tempArray.length; i++) {
+                    OrderDetailsDB.push(tempArray[i]);
+                }
+            }
+            $("#inputBalance").attr("disabled", true);
+
+        });
+    }
 </script>
 
 </body>
