@@ -198,6 +198,35 @@
         }
     });
 
+    $("#btnSearchItem").click(function () {
+        var searchID = $("#txtItemID").val();
+
+        response = searchItem(searchID);
+        if (response) {
+            /*$("#custID").val(response.getItemCode());
+            $("#custName").val(response.getItemName());
+            $("#nic").val(response.getNIC());
+            $("#address").val(response.getAddress());
+            $("#contact").val(response.getContact());*/
+            $("#itemTable").empty();
+            let row = `<tr><td>${response.getItemCode()}</td><td>${response.getItemName()}</td><td>${response.getPrice()}</td><td>${response.getItemQTY()}</tr>`;
+            $("#itemTable").append(row);
+            $("#txtItemID").val("");
+            $("#updateItem").attr("disabled", false);
+            $("#deleteItem").attr("disabled", false);
+        }else{
+            /* alert("No Such a Customer");*/
+            loadAllItems();
+
+            swal({
+                title:"Error..!",
+                text: "No such Item...",
+                icon : "warning",
+                timer : 2000
+            });
+        }
+    });
+
     $("#updateItem").click(function () {
         $("#iCode").val(response.getItemCode());
         $("#itemName").val(response.getItemName());
