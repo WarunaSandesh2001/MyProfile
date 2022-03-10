@@ -12,6 +12,8 @@
     $("#inputBalance").attr("disabled", true);
     $("#inputCash").attr("disabled", true);
     $("#purchase").attr("disabled", true);
+    $("#inputOrderID").attr("disabled", true);
+    $('#inputDate').val(new Date().toISOString().slice(0, 10));
 
     var ifExistsCustomer = false;
     var ifExistsItem = false;
@@ -55,6 +57,23 @@
             }
         }
         ifExistsCustomer = false;
+    }
+
+    function setOrderID() {
+        if (OrderDB.length == 0) {
+            $("#inputOrderID").val("O00-001");
+        } else if (OrderDB.length > 0) {
+            var orderId = OrderDB[OrderDB.length - 1].getOrderCode().split("-")[1];
+            var tempId = parseInt(orderId);
+            tempId = tempId + 1;
+            if (tempId <= 9) {
+                $("#inputOrderID").val("O00-00" + tempId);
+            } else if (tempId <= 99) {
+                $("#inputOrderID").val("O00-00" + tempId);
+            } else if (tempId <= 999) {
+                $("#inputOrderID").val("O00-" + tempId);
+            }
+        }
     }
 
     function setItemIdsToComboBox() {
@@ -144,5 +163,7 @@
             }
         }
         $("#inputBalance").attr("disabled", true);
+        loadOrderDetailTable();
+        setOrderID();
     });
 }
