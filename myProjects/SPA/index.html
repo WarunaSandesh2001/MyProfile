@@ -371,19 +371,19 @@
                 </div>
                 <div class="col-md-6 mt-2">
                     <label class="form-label" for="inputId">ID</label>
-                    <input class="form-control" id="inputId" type="text">
+                    <input class="form-control" id="inputId" type="text" disabled>
                 </div>
                 <div class="col-md-6 mt-2">
                     <label class="form-label" for="inputName">Name</label>
-                    <input class="form-control" id="inputName" type="text">
+                    <input class="form-control" id="inputName" type="text" disabled>
                 </div>
                 <div class="col-md-6 mt-2">
                     <label class="form-label" for="inputContact">Contact</label>
-                    <input class="form-control" id="inputContact" type="text">
+                    <input class="form-control" id="inputContact" type="text" disabled>
                 </div>
                 <div class="col-md-12 mt-2">
                     <label class="form-label" for="inputAddress">Address</label>
-                    <input class="form-control" id="inputAddress" type="text">
+                    <input class="form-control" id="inputAddress" type="text" disabled>
                 </div>
             </div>
         </div>
@@ -405,19 +405,19 @@
                 </div>
                 <div class="col-md-6 mt-1">
                     <label class="form-label" for="inputItemCode">Item Code</label>
-                    <input class="form-control" id="inputItemCode" type="text">
+                    <input class="form-control" id="inputItemCode" type="text" disabled>
                 </div>
                 <div class="col-md-4 mt-2">
                     <label class="form-label" for="inputIName">Name</label>
-                    <input class="form-control" id="inputIName" type="text">
+                    <input class="form-control" id="inputIName" type="text" disabled>
                 </div>
                 <div class="col-md-4 mt-2">
                     <label class="form-label" for="inputQTY">Qty On Hand</label>
-                    <input class="form-control" id="inputQTY" type="text">
+                    <input class="form-control" id="inputQTY" type="text" disabled>
                 </div>
                 <div class="col-md-4 mt-2">
                     <label class="form-label" for="inputPrice">Price</label>
-                    <input class="form-control" id="inputPrice" type="text">
+                    <input class="form-control" id="inputPrice" type="text" disabled>
                 </div>
                 <div class="col-md-12 mt-2">
                     <label class="form-label" for="inputOrderQTY">Order Quantity</label>
@@ -603,6 +603,20 @@
         setOrderID();
     });
 
+    function setCustomerIdsToComboBox() {
+        $("#inputState").empty();
+        $("#inputState").append(new Option("-Select Customer-", ""));
+        for (let i = 0; i < customerDB.length; i++) {
+            $("#inputState").append(new Option(customerDB[i].getID(), i));
+        }
+    }
+    function setItemIdsToComboBox() {
+        $("#selectItem").empty();
+        $("#selectItem").append(new Option("-Select Item-", ""));
+        for (let i = 0; i < itemDB.length; i++) {
+            $("#selectItem").append(new Option(itemDB[i].getItemCode(), i));
+        }
+    }
     document.getElementById("navPlacedOrders").addEventListener("click", function () {
         document.getElementById("home").style.display = "none";
         document.getElementById("customer").style.display = "none";

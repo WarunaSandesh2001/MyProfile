@@ -1,18 +1,20 @@
 {
-    $("#inputId").attr("disabled", true);
+   /* $("#inputId").attr("disabled", true);
     $("#inputName").attr("disabled", true);
     $("#inputContact").attr("disabled", true);
-    $("#inputAddress").attr("disabled", true);
+    $("#inputAddress").attr("disabled", true);*/
 
-    $("#inputItemCode").attr("disabled", true);
+   /* $("#inputItemCode").attr("disabled", true);
     $("#inputIName").attr("disabled", true);
     $("#inputQTY").attr("disabled", true);
-    $("#inputPrice").attr("disabled", true);
+    $("#inputPrice").attr("disabled", true);*/
 
     $("#inputBalance").attr("disabled", true);
     $("#inputCash").attr("disabled", true);
     $("#purchase").attr("disabled", true);
     $("#inputOrderID").attr("disabled", true);
+    $("#inputOrderQTY").attr("disabled", true);
+    $("#btnAddToCart").attr("disabled", true);
     $('#inputDate').val(new Date().toISOString().slice(0, 10));
 
     var ifExistsCustomer = false;
@@ -94,12 +96,14 @@
             $("#inputIName").val(searchItem1.getItemName());
             $("#inputQTY").val(searchItem1.getItemQTY());
             $("#inputPrice").val(searchItem1.getPrice());
+            $("#inputOrderQTY").attr("disabled", false);
         }
         if (ifExistsItem == false) {
             $("#inputItemCode").val("");
             $("#inputIName").val("");
             $("#inputQTY").val("");
             $("#inputPrice").val("");
+            $("#inputOrderQTY").attr("disabled", true);
         }
 
     });
@@ -122,17 +126,73 @@
         }
     }
 
+    $("#inputOrderQTY").on('keyup', function (eventOb) {
+        if (eventOb.key == "Enter") {
+            $("#btnAddToCart").attr("disabled", false);
+            if ($("#inputOrderQTY").val() <= $("#inputQTY").val()) {
+                if ($("#inputOrderQTY").val() != 0) {
+                    let OID = $("#inputOrderID").val();
+                    let orderQTY = $("#inputOrderQTY").val();
+                    total = total + orderQTY * selectedItem.getPrice();
+                    let val = $("#inputQTY").val();
+                    $("#inputQTY").val(val - orderQTY);
+
+                    orderDetailObject = new OrderDetailDTO(OID, selectedItem.getItemCode(), selectedItem.getItemName(), orderQTY, selectedItem.getPrice(), total);
+                    tempArray.push(orderDetailObject);
+                    loadAllOrders();
+
+                    $("#totalPrice").text("Total Price : Rs." + total);
+                    $("#subTotal").text("Sub Price- : Rs." + total);
+                } else {
+                    swal({
+                        title: "Error..!",
+                        text: "PLease enter Order Quantity...!",
+                        icon: "warning",
+                        timer: 2000
+                    });
+                }
+            } else {
+                swal({
+                    title: "Error..!",
+                    text: "Order Qty is higher than Qty On Hand...",
+                    icon: "warning",
+                    timer: 2000
+                });
+            }
+        }
+    });
+
     $("#btnAddToCart").click(function () {
-        let OID = $("#inputOrderID").val();
-        let orderQTY = $("#inputOrderQTY").val();
-        total = total + orderQTY * selectedItem.getPrice();
+        if ($("#inputOrderQTY").val() <= $("#inputQTY").val()) {
+            if ($("#inputOrderQTY").val() != 0) {
+                let OID = $("#inputOrderID").val();
+                let orderQTY = $("#inputOrderQTY").val();
+                total = total + orderQTY * selectedItem.getPrice();
+                let val = $("#inputQTY").val();
+                $("#inputQTY").val(val - orderQTY);
 
-        orderDetailObject = new OrderDetailDTO(OID, selectedItem.getItemCode(), selectedItem.getItemName(), orderQTY, selectedItem.getPrice(), total);
-        tempArray.push(orderDetailObject);
-        loadAllOrders();
+                orderDetailObject = new OrderDetailDTO(OID, selectedItem.getItemCode(), selectedItem.getItemName(), orderQTY, selectedItem.getPrice(), total);
+                tempArray.push(orderDetailObject);
+                loadAllOrders();
 
-        $("#totalPrice").text("Total Price : Rs." + total);
-        $("#subTotal").text("Sub Price- : Rs." + total);
+                $("#totalPrice").text("Total Price : Rs." + total);
+                $("#subTotal").text("Sub Price- : Rs." + total);
+            } else {
+                swal({
+                    title: "Error..!",
+                    text: "PLease enter Order Quantity...!",
+                    icon: "warning",
+                    timer: 2000
+                });
+            }
+        } else {
+            swal({
+                title: "Error..!",
+                text: "Order Qty is higher than Qty On Hand...",
+                icon: "warning",
+                timer: 2000
+            });
+        }
     });
 
     $("#inputDiscount").on('keyup', function (eventOb) {
@@ -159,11 +219,49 @@
             let orderObject = new OrderDTO(OID, date, subTotal, orderDetailObject);
             OrderDB.push(orderObject);
             for (i = 0; i < tempArray.length; i++) {
-                OrderDetailsDB.push(tempArray[i]);
+                var orderDetail = new OrderDetailDTO(OID, tempArray[i].getItemCodeOfDetails(), tempArray[i].getItemNameOfDetails(), tempArray[i].getPricePerUnit(), tempArray[i].getOrderQTY(), tempArray[i].getTPrice());
+                OrderDetailsDB.push(orderDetail);
+                manageQuantity(tempArray[i].getItemCodeOfDetails(), tempArray[i].getOrderQTY());//-------------------------------
             }
         }
         $("#inputBalance").attr("disabled", true);
         loadOrderDetailTable();
         setOrderID();
+        //clearData();
+        loadAllOrders();
     });
+
+   /*function clearData() {
+        $("#selectItem").val("");
+        $("#inputState").val("");
+        //-------------------------------------
+        $("#inputItemCode").val("");
+        $("#inputIName").val("");
+        $("#inputQTY").val("");
+        $("#inputPrice").val("");
+        $("#inputOrderQTY").val("");
+        $("#inputOrderQTY").attr("disabled", true);
+        $("#purchase").attr("disabled", true);
+        /------------------------------------------
+        $("#inputId").val("");
+        $("#inputName").val("");
+        $("#inputContact").val("");
+        $("#inputAddress").val("");
+        /------------------------------------------
+        $("#inputDiscount").val("");
+        $("#inputCash").val("");
+        $("#inputBalance").val("");
+        tempArray.splice(0, tempArray.length);
+    }*/
+
+    function manageQuantity(itemCode, buyQty) {
+        for (var i = 0; i < itemDB.length; i++) {
+            if (itemDB[i].getItemCode() == itemCode) {
+                let tempQty = parseInt(itemDB[i].getItemQTY());
+                let qtyOnHand = tempQty - buyQty;
+                itemDB[i].setItemQTY(qtyOnHand);
+            }
+        }
+    }
+
 }
